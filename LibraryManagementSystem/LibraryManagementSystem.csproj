@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Forms\AdminDashboard\" />
+    <Compile Remove="Forms\AdminDashboard\**" />
+    <EmbeddedResource Remove="Forms\AdminDashboard\**" />
+    <None Remove="Forms\AdminDashboard\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.1.0" />
   </ItemGroup>
 
 </Project>
