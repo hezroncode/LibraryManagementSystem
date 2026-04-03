@@ -1,8 +1,9 @@
-using MySql.Data.MySqlClient;
-using System.Data;
 using ColegioLibrarySystem.Helpers;
 using ColegioLibrarySystem.Models;
-
+using LibraryManagementSystem.Forms;
+using LibraryManagementSystem.Forms.AdminDashboard;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace LibraryManagementSystem
 {
@@ -42,7 +43,23 @@ namespace LibraryManagementSystem
                 Session.FullName = dt.Rows[0]["fullName"].ToString();
 
                 MessageBox.Show($"Welcome {Session.FullName}! Role: {Session.Role}");
+
+                if (Session.Role == "Admin")
+                {
+                    MainAdminDashboard adminForm = new MainAdminDashboard();
+                    adminForm.Show();
+                }
+                this.Hide();
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AdminSignUpForm adminSignupForm = new AdminSignUpForm();
+
+            adminSignupForm.Show();
+            this.Hide();
+
         }
     }
 }
