@@ -77,8 +77,9 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(10, 10, 10, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(730, 567);
+            panel1.Size = new Size(730, 565);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // linkLabel1
             // 
@@ -117,7 +118,7 @@
             panel8.Controls.Add(textBox3);
             panel8.Location = new Point(210, 364);
             panel8.Name = "panel8";
-            panel8.Size = new Size(311, 43);
+            panel8.Size = new Size(311, 41);
             panel8.TabIndex = 6;
             // 
             // pictureBox3
@@ -168,7 +169,7 @@
             panel6.Controls.Add(textBox2);
             panel6.Location = new Point(208, 259);
             panel6.Name = "panel6";
-            panel6.Size = new Size(311, 43);
+            panel6.Size = new Size(311, 41);
             panel6.TabIndex = 4;
             // 
             // pictureBox2
@@ -219,7 +220,7 @@
             panel4.Controls.Add(textBox1);
             panel4.Location = new Point(208, 156);
             panel4.Name = "panel4";
-            panel4.Size = new Size(311, 43);
+            panel4.Size = new Size(311, 41);
             panel4.TabIndex = 2;
             // 
             // pictureBox1
@@ -279,7 +280,7 @@
             panel2.Dock = DockStyle.Right;
             panel2.Location = new Point(567, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(163, 567);
+            panel2.Size = new Size(163, 565);
             panel2.TabIndex = 1;
             // 
             // panel3
@@ -287,7 +288,7 @@
             panel3.Dock = DockStyle.Left;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(163, 567);
+            panel3.Size = new Size(163, 565);
             panel3.TabIndex = 2;
             // 
             // AdminSignUpForm
@@ -295,7 +296,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
-            ClientSize = new Size(730, 567);
+            ClientSize = new Size(730, 565);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);

@@ -213,7 +213,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(label3);
             Name = "ucCategories";
-            Size = new Size(1141, 583);
+            Size = new Size(1126, 571);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel6.ResumeLayout(false);

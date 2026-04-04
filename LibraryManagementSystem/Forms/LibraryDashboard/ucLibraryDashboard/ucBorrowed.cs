@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LibraryManagementSystem.Forms.AdminDashboard
+namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
 {
-    public partial class ucUser : UserControl
+    public partial class ucBorrowed : UserControl
     {
-        public ucUser()
+        public ucBorrowed()
         {
             InitializeComponent();
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

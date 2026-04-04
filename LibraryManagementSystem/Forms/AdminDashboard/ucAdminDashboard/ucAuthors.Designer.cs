@@ -261,7 +261,7 @@
             Controls.Add(panel3);
             Controls.Add(button8);
             Name = "ucAuthors";
-            Size = new Size(1142, 583);
+            Size = new Size(1126, 571);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel4.ResumeLayout(false);

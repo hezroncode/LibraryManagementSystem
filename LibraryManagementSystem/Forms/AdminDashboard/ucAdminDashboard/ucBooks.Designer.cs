@@ -400,7 +400,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(label3);
             Name = "ucBooks";
-            Size = new Size(1141, 582);
+            Size = new Size(1126, 571);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel1.ResumeLayout(false);

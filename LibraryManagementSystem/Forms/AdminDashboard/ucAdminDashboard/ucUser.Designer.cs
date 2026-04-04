@@ -36,8 +36,6 @@
             label7 = new Label();
             label8 = new Label();
             panel8 = new Panel();
-            textBox3 = new TextBox();
-            panel9 = new Panel();
             panel10 = new Panel();
             panel11 = new Panel();
             textBox4 = new TextBox();
@@ -52,6 +50,7 @@
             label4 = new Label();
             dataGridView1 = new DataGridView();
             label3 = new Label();
+            comboBox1 = new ComboBox();
             panel3.SuspendLayout();
             panel8.SuspendLayout();
             panel10.SuspendLayout();
@@ -127,6 +126,7 @@
             button5.TabIndex = 21;
             button5.Text = "Add";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // panel3
             // 
@@ -173,29 +173,11 @@
             // 
             panel8.Anchor = AnchorStyles.None;
             panel8.BackColor = Color.Transparent;
-            panel8.Controls.Add(textBox3);
-            panel8.Controls.Add(panel9);
+            panel8.Controls.Add(comboBox1);
             panel8.Location = new Point(35, 284);
             panel8.Name = "panel8";
             panel8.Size = new Size(245, 42);
             panel8.TabIndex = 18;
-            // 
-            // textBox3
-            // 
-            textBox3.BackColor = Color.White;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(4, 13);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(239, 20);
-            textBox3.TabIndex = 3;
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.MediumPurple;
-            panel9.Location = new Point(5, 37);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(240, 2);
-            panel9.TabIndex = 2;
             // 
             // panel10
             // 
@@ -340,6 +322,15 @@
             label3.TabIndex = 17;
             label3.Text = "Enroll User";
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Student", "Instructor" });
+            comboBox1.Location = new Point(4, 11);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 0;
+            // 
             // ucUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -353,11 +344,10 @@
             Controls.Add(dataGridView1);
             Controls.Add(label3);
             Name = "ucUser";
-            Size = new Size(1142, 583);
+            Size = new Size(1126, 571);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel8.ResumeLayout(false);
-            panel8.PerformLayout();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
             panel4.ResumeLayout(false);
@@ -379,8 +369,6 @@
         private Label label7;
         private Label label8;
         private Panel panel8;
-        private TextBox textBox3;
-        private Panel panel9;
         private Panel panel10;
         private Panel panel11;
         private TextBox textBox4;
@@ -395,5 +383,6 @@
         private Label label4;
         private DataGridView dataGridView1;
         private Label label3;
+        private ComboBox comboBox1;
     }
 }

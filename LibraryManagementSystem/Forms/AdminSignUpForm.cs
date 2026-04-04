@@ -56,7 +56,7 @@ namespace LibraryManagementSystem.Forms
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Something went wrong");
             }
@@ -64,7 +64,12 @@ namespace LibraryManagementSystem.Forms
 
 
 
-            
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

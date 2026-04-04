@@ -31,6 +31,7 @@
             panel1 = new Panel();
             linkLabel1 = new LinkLabel();
             panel2 = new Panel();
+            button5 = new Button();
             button4 = new Button();
             button3 = new Button();
             button2 = new Button();
@@ -38,7 +39,6 @@
             label2 = new Label();
             label1 = new Label();
             pnlContainer = new Panel();
-            button5 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -85,6 +85,24 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(992, 160);
             panel2.TabIndex = 1;
+            // 
+            // button5
+            // 
+            button5.AutoSize = true;
+            button5.BackColor = Color.BlueViolet;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(382, 107);
+            button5.Margin = new Padding(3, 4, 3, 4);
+            button5.Name = "button5";
+            button5.Padding = new Padding(5, 4, 5, 5);
+            button5.Size = new Size(115, 42);
+            button5.TabIndex = 6;
+            button5.Text = "Home";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -189,24 +207,6 @@
             pnlContainer.Name = "pnlContainer";
             pnlContainer.Size = new Size(1126, 571);
             pnlContainer.TabIndex = 1;
-            // 
-            // button5
-            // 
-            button5.AutoSize = true;
-            button5.BackColor = Color.BlueViolet;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.ForeColor = Color.White;
-            button5.Location = new Point(382, 107);
-            button5.Margin = new Padding(3, 4, 3, 4);
-            button5.Name = "button5";
-            button5.Padding = new Padding(5, 4, 5, 5);
-            button5.Size = new Size(115, 42);
-            button5.TabIndex = 6;
-            button5.Text = "Home";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
             // 
             // MainAdminDashboard
             // 

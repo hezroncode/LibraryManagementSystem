@@ -2,6 +2,7 @@ using ColegioLibrarySystem.Helpers;
 using ColegioLibrarySystem.Models;
 using LibraryManagementSystem.Forms;
 using LibraryManagementSystem.Forms.AdminDashboard;
+using LibraryManagementSystem.Forms.UserDashboard;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -48,6 +49,11 @@ namespace LibraryManagementSystem
                 {
                     MainAdminDashboard adminForm = new MainAdminDashboard();
                     adminForm.Show();
+                }
+                else
+                {
+                    MainLibraryDashboard libraryForm = new MainLibraryDashboard();
+                    libraryForm.Show();
                 }
                 this.Hide();
             }
