@@ -40,9 +40,13 @@
             label4 = new Label();
             dataGridView1 = new DataGridView();
             label3 = new Label();
+            button1 = new Button();
+            textBox3 = new TextBox();
+            panel2 = new Panel();
             panel3.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // button8
@@ -61,6 +65,7 @@
             button8.TabIndex = 24;
             button8.Text = "Refresh";
             button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
             // 
             // button7
             // 
@@ -112,6 +117,7 @@
             button5.TabIndex = 21;
             button5.Text = "Add";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // panel3
             // 
@@ -123,7 +129,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(383, 151);
             panel3.TabIndex = 18;
-            panel3.Paint += panel3_Paint;
             // 
             // label6
             // 
@@ -170,8 +175,8 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.MediumPurple;
-            label4.Location = new Point(476, 63);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(3, 7);
             label4.Name = "label4";
             label4.Size = new Size(125, 31);
             label4.TabIndex = 20;
@@ -179,7 +184,7 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.Gainsboro;
+            dataGridView1.BackgroundColor = Color.Snow;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(476, 97);
@@ -200,18 +205,51 @@
             label3.TabIndex = 17;
             label3.Text = "Category";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.DarkViolet;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(808, 18);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 31;
+            button1.Text = "Search";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(908, 20);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(166, 27);
+            textBox3.TabIndex = 30;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.DarkViolet;
+            panel2.Controls.Add(label4);
+            panel2.Location = new Point(476, 50);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(598, 47);
+            panel2.TabIndex = 32;
+            // 
             // ucCategories
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
+            Controls.Add(textBox3);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(panel3);
-            Controls.Add(label4);
             Controls.Add(dataGridView1);
             Controls.Add(label3);
+            Controls.Add(panel2);
             Name = "ucCategories";
             Size = new Size(1126, 571);
             panel3.ResumeLayout(false);
@@ -219,6 +257,8 @@
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -237,5 +277,8 @@
         private Label label4;
         private DataGridView dataGridView1;
         private Label label3;
+        private Button button1;
+        private TextBox textBox3;
+        private Panel panel2;
     }
 }

@@ -35,34 +35,36 @@
             panel3 = new Panel();
             label1 = new Label();
             panel1 = new Panel();
-            textBox5 = new TextBox();
-            panel2 = new Panel();
+            numericUpDown1 = new NumericUpDown();
             label7 = new Label();
             label8 = new Label();
             panel8 = new Panel();
             textBox3 = new TextBox();
             panel9 = new Panel();
             panel10 = new Panel();
-            panel11 = new Panel();
-            textBox4 = new TextBox();
+            comboBox1 = new ComboBox();
             label5 = new Label();
             label6 = new Label();
             panel4 = new Panel();
-            textBox2 = new TextBox();
-            panel5 = new Panel();
+            comboBox2 = new ComboBox();
             panel6 = new Panel();
             panel7 = new Panel();
             textBox1 = new TextBox();
             label4 = new Label();
             dataGridView1 = new DataGridView();
             label3 = new Label();
+            panel2 = new Panel();
+            textBox2 = new TextBox();
+            button1 = new Button();
             panel3.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             panel8.SuspendLayout();
             panel10.SuspendLayout();
             panel4.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // button8
@@ -81,6 +83,7 @@
             button8.TabIndex = 16;
             button8.Text = "Refresh";
             button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
             // 
             // button7
             // 
@@ -132,6 +135,7 @@
             button5.TabIndex = 13;
             button5.Text = "Add";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // panel3
             // 
@@ -158,7 +162,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.MediumPurple;
-            label1.Location = new Point(26, 307);
+            label1.Location = new Point(203, 281);
             label1.Name = "label1";
             label1.Size = new Size(115, 25);
             label1.TabIndex = 22;
@@ -168,29 +172,20 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(textBox5);
-            panel1.Controls.Add(panel2);
-            panel1.Location = new Point(30, 322);
+            panel1.Controls.Add(numericUpDown1);
+            panel1.Location = new Point(207, 296);
             panel1.Name = "panel1";
-            panel1.Size = new Size(245, 42);
+            panel1.Size = new Size(119, 42);
             panel1.TabIndex = 21;
             // 
-            // textBox5
+            // numericUpDown1
             // 
-            textBox5.BackColor = Color.White;
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Location = new Point(4, 13);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(239, 20);
-            textBox5.TabIndex = 3;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.MediumPurple;
-            panel2.Location = new Point(5, 37);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(240, 2);
-            panel2.TabIndex = 2;
+            numericUpDown1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            numericUpDown1.ForeColor = Color.DarkViolet;
+            numericUpDown1.Location = new Point(6, 12);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(105, 27);
+            numericUpDown1.TabIndex = 3;
             // 
             // label7
             // 
@@ -198,7 +193,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.MediumPurple;
-            label7.Location = new Point(27, 235);
+            label7.Location = new Point(26, 200);
             label7.Name = "label7";
             label7.Size = new Size(136, 25);
             label7.TabIndex = 20;
@@ -210,7 +205,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.MediumPurple;
-            label8.Location = new Point(27, 159);
+            label8.Location = new Point(26, 282);
             label8.Name = "label8";
             label8.Size = new Size(103, 25);
             label8.TabIndex = 19;
@@ -222,7 +217,7 @@
             panel8.BackColor = Color.Transparent;
             panel8.Controls.Add(textBox3);
             panel8.Controls.Add(panel9);
-            panel8.Location = new Point(31, 250);
+            panel8.Location = new Point(30, 215);
             panel8.Name = "panel8";
             panel8.Size = new Size(245, 42);
             panel8.TabIndex = 18;
@@ -248,29 +243,21 @@
             // 
             panel10.Anchor = AnchorStyles.None;
             panel10.BackColor = Color.Transparent;
-            panel10.Controls.Add(panel11);
-            panel10.Controls.Add(textBox4);
-            panel10.Location = new Point(31, 172);
+            panel10.Controls.Add(comboBox1);
+            panel10.Location = new Point(30, 296);
             panel10.Name = "panel10";
-            panel10.Size = new Size(245, 42);
+            panel10.Size = new Size(123, 51);
             panel10.TabIndex = 17;
             // 
-            // panel11
+            // comboBox1
             // 
-            panel11.BackColor = Color.MediumPurple;
-            panel11.Location = new Point(3, 37);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(240, 2);
-            panel11.TabIndex = 1;
-            // 
-            // textBox4
-            // 
-            textBox4.BackColor = Color.White;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(4, 16);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(239, 20);
-            textBox4.TabIndex = 0;
+            comboBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            comboBox1.ForeColor = Color.DarkViolet;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(5, 11);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(105, 28);
+            comboBox1.TabIndex = 0;
             // 
             // label5
             // 
@@ -278,7 +265,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.MediumPurple;
-            label5.Location = new Point(26, 79);
+            label5.Location = new Point(26, 116);
             label5.Name = "label5";
             label5.Size = new Size(72, 25);
             label5.TabIndex = 16;
@@ -290,7 +277,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.MediumPurple;
-            label6.Location = new Point(26, 3);
+            label6.Location = new Point(26, 40);
             label6.Name = "label6";
             label6.Size = new Size(49, 25);
             label6.TabIndex = 15;
@@ -300,29 +287,19 @@
             // 
             panel4.Anchor = AnchorStyles.None;
             panel4.BackColor = Color.Transparent;
-            panel4.Controls.Add(textBox2);
-            panel4.Controls.Add(panel5);
-            panel4.Location = new Point(30, 94);
+            panel4.Controls.Add(comboBox2);
+            panel4.Location = new Point(30, 131);
             panel4.Name = "panel4";
             panel4.Size = new Size(245, 42);
             panel4.TabIndex = 14;
             // 
-            // textBox2
+            // comboBox2
             // 
-            textBox2.BackColor = Color.White;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(4, 13);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(239, 20);
-            textBox2.TabIndex = 3;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.MediumPurple;
-            panel5.Location = new Point(5, 37);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(240, 2);
-            panel5.TabIndex = 2;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(0, 10);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(175, 28);
+            comboBox2.TabIndex = 3;
             // 
             // panel6
             // 
@@ -330,7 +307,7 @@
             panel6.BackColor = Color.Transparent;
             panel6.Controls.Add(panel7);
             panel6.Controls.Add(textBox1);
-            panel6.Location = new Point(30, 16);
+            panel6.Location = new Point(30, 53);
             panel6.Name = "panel6";
             panel6.Size = new Size(245, 42);
             panel6.TabIndex = 13;
@@ -357,8 +334,8 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.MediumPurple;
-            label4.Location = new Point(476, 63);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(3, 9);
             label4.Name = "label4";
             label4.Size = new Size(115, 31);
             label4.TabIndex = 12;
@@ -366,9 +343,10 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.Gainsboro;
+            dataGridView1.BackgroundColor = Color.Snow;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.GridColor = Color.Snow;
             dataGridView1.Location = new Point(476, 97);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -387,33 +365,66 @@
             label3.TabIndex = 9;
             label3.Text = "Books";
             // 
+            // panel2
+            // 
+            panel2.BackColor = Color.DarkViolet;
+            panel2.Controls.Add(label4);
+            panel2.Location = new Point(476, 50);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(598, 47);
+            panel2.TabIndex = 17;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(908, 17);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(166, 27);
+            textBox2.TabIndex = 18;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.DarkViolet;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(808, 15);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 19;
+            button1.Text = "Search";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // ucBooks
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
+            Controls.Add(textBox2);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(panel3);
-            Controls.Add(label4);
             Controls.Add(dataGridView1);
             Controls.Add(label3);
+            Controls.Add(panel2);
             Name = "ucBooks";
             Size = new Size(1126, 571);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
             panel10.ResumeLayout(false);
-            panel10.PerformLayout();
             panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -428,16 +439,11 @@
         private Label label7;
         private Label label8;
         private Panel panel8;
-        private TextBox textBox3;
         private Panel panel9;
         private Panel panel10;
-        private Panel panel11;
-        private TextBox textBox4;
         private Label label5;
         private Label label6;
         private Panel panel4;
-        private TextBox textBox2;
-        private Panel panel5;
         private Panel panel6;
         private Panel panel7;
         private TextBox textBox1;
@@ -446,7 +452,12 @@
         private Label label3;
         private Label label1;
         private Panel panel1;
-        private TextBox textBox5;
+        private NumericUpDown numericUpDown1;
+        private ComboBox comboBox1;
+        private TextBox textBox3;
+        private ComboBox comboBox2;
         private Panel panel2;
+        private TextBox textBox2;
+        private Button button1;
     }
 }

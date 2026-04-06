@@ -36,6 +36,7 @@
             label7 = new Label();
             label8 = new Label();
             panel8 = new Panel();
+            comboBox1 = new ComboBox();
             panel10 = new Panel();
             panel11 = new Panel();
             textBox4 = new TextBox();
@@ -50,13 +51,16 @@
             label4 = new Label();
             dataGridView1 = new DataGridView();
             label3 = new Label();
-            comboBox1 = new ComboBox();
+            panel2 = new Panel();
+            button1 = new Button();
+            textBox3 = new TextBox();
             panel3.SuspendLayout();
             panel8.SuspendLayout();
             panel10.SuspendLayout();
             panel4.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // button8
@@ -75,6 +79,7 @@
             button8.TabIndex = 24;
             button8.Text = "Refresh";
             button8.UseVisualStyleBackColor = false;
+            button8.Click += button8_Click;
             // 
             // button7
             // 
@@ -178,6 +183,16 @@
             panel8.Name = "panel8";
             panel8.Size = new Size(245, 42);
             panel8.TabIndex = 18;
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Student", "Instructor" });
+            comboBox1.Location = new Point(4, 11);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 0;
             // 
             // panel10
             // 
@@ -292,8 +307,8 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.MediumPurple;
-            label4.Location = new Point(476, 63);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(3, 9);
             label4.Name = "label4";
             label4.Size = new Size(71, 31);
             label4.TabIndex = 20;
@@ -301,7 +316,7 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.Gainsboro;
+            dataGridView1.BackgroundColor = Color.Snow;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(476, 97);
@@ -322,27 +337,51 @@
             label3.TabIndex = 17;
             label3.Text = "Enroll User";
             // 
-            // comboBox1
+            // panel2
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Student", "Instructor" });
-            comboBox1.Location = new Point(4, 11);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 0;
+            panel2.BackColor = Color.DarkViolet;
+            panel2.Controls.Add(label4);
+            panel2.Location = new Point(476, 50);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(598, 47);
+            panel2.TabIndex = 31;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.DarkViolet;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(808, 15);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 33;
+            button1.Text = "Search";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(908, 17);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(166, 27);
+            textBox3.TabIndex = 32;
             // 
             // ucUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
+            Controls.Add(textBox3);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(panel3);
-            Controls.Add(label4);
             Controls.Add(dataGridView1);
             Controls.Add(label3);
+            Controls.Add(panel2);
             Name = "ucUser";
             Size = new Size(1126, 571);
             panel3.ResumeLayout(false);
@@ -355,6 +394,8 @@
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -384,5 +425,8 @@
         private DataGridView dataGridView1;
         private Label label3;
         private ComboBox comboBox1;
+        private Panel panel2;
+        private Button button1;
+        private TextBox textBox3;
     }
 }

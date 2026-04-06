@@ -142,10 +142,13 @@
             // textBox3
             // 
             textBox3.BorderStyle = BorderStyle.None;
+            textBox3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox3.ForeColor = Color.DarkViolet;
             textBox3.Location = new Point(3, 13);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(308, 20);
+            textBox3.Size = new Size(308, 23);
             textBox3.TabIndex = 0;
+            textBox3.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -154,7 +157,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.MediumPurple;
-            label4.Location = new Point(210, 333);
+            label4.Location = new Point(205, 333);
             label4.Name = "label4";
             label4.Size = new Size(97, 28);
             label4.TabIndex = 5;
@@ -193,9 +196,11 @@
             // textBox2
             // 
             textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.ForeColor = Color.DarkViolet;
             textBox2.Location = new Point(3, 13);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(308, 20);
+            textBox2.Size = new Size(308, 23);
             textBox2.TabIndex = 0;
             // 
             // label3
@@ -205,7 +210,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.MediumPurple;
-            label3.Location = new Point(208, 228);
+            label3.Location = new Point(203, 228);
             label3.Name = "label3";
             label3.Size = new Size(104, 28);
             label3.TabIndex = 3;
@@ -244,9 +249,11 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.ForeColor = Color.DarkViolet;
             textBox1.Location = new Point(3, 13);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(308, 20);
+            textBox1.Size = new Size(308, 23);
             textBox1.TabIndex = 0;
             // 
             // label2
@@ -256,7 +263,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.MediumPurple;
-            label2.Location = new Point(208, 125);
+            label2.Location = new Point(203, 125);
             label2.Name = "label2";
             label2.Size = new Size(95, 28);
             label2.TabIndex = 1;
