@@ -64,7 +64,7 @@ namespace LibraryManagementSystem
             AdminSignUpForm adminSignupForm = new AdminSignUpForm();
 
             adminSignupForm.Show();
-            this.Hide();
+            this.Hide(); //Test
 
         }
     }
