@@ -96,9 +96,9 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(40, 50);
+            button1.Location = new Point(40, 49);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(94, 30);
             button1.TabIndex = 3;
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = false;
@@ -109,7 +109,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(204, 27);
             textBox1.TabIndex = 2;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // panel2
             // 
@@ -132,6 +131,7 @@
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(129, 27);
             numericUpDown1.TabIndex = 6;
+            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // label8
             // 
@@ -144,7 +144,6 @@
             label8.Size = new Size(77, 23);
             label8.TabIndex = 5;
             label8.Text = "Quantity";
-            label8.Click += label8_Click;
             // 
             // button2
             // 
@@ -159,6 +158,7 @@
             button2.TabIndex = 4;
             button2.Text = "Confirm Borrow";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label6
             // 
@@ -259,13 +259,15 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.Gainsboro;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(40, 88);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(651, 443);
             dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // ucLibraryHome
             // 

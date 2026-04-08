@@ -55,21 +55,13 @@ namespace LibraryManagementSystem.Forms
                 MessageBox.Show($"Admin account created successfully! {fullName}");
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Something went wrong");
             }
-
-
-
-
-
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        //protected override void OnFormClosed(FormClosedEventArgs e) { Application.Exit(); }
     }
 }

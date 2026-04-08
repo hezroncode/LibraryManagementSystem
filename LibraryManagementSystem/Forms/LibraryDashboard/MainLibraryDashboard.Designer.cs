@@ -163,7 +163,7 @@
             linkLabel1.TabIndex = 2;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Logout";
-            linkLabel1.LinkClicked += this.linkLabel1_LinkClicked;
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // panel1
             // 

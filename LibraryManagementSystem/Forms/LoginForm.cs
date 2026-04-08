@@ -57,15 +57,33 @@ namespace LibraryManagementSystem
                 }
                 this.Hide();
             }
+            else 
+            {
+                MessageBox.Show("Invalid username or password. Please try again.");
+                textBox1.Clear();
+                textBox2.Clear();
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            AdminSignUpForm adminSignupForm = new AdminSignUpForm();
+            using (AdminCode codewindow = new AdminCode())
+            {
+                if (codewindow.ShowDialog() == DialogResult.OK)
+                {
+                    AdminSignUpForm signUpForm = new AdminSignUpForm();
+                    signUpForm.Show();
+                    this.Hide();
 
-            adminSignupForm.Show();
-            this.Hide();
+                    signUpForm.FormClosed += (s, args) =>
+                    {
+                        this.Show();
+                    };
+                }
+            }
 
         }
+
+        //protected override void OnFormClosed(FormClosedEventArgs e) { Application.Exit(); }
     }
 }

@@ -72,7 +72,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(338, 480);
             panel2.TabIndex = 3;
-            
             // 
             // button2
             // 
@@ -132,6 +131,7 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(250, 203);
             panel4.TabIndex = 2;
+            panel4.Paint += panel4_Paint;
             // 
             // label4
             // 
@@ -142,9 +142,9 @@
             label4.ForeColor = Color.FromArgb(64, 64, 64);
             label4.Location = new Point(3, 136);
             label4.Name = "label4";
-            label4.Size = new Size(189, 25);
+            label4.Size = new Size(137, 25);
             label4.TabIndex = 4;
-            label4.Text = "Year Published: {year}";
+            label4.Text = "Year Published:";
             // 
             // label3
             // 
@@ -155,9 +155,9 @@
             label3.ForeColor = Color.FromArgb(64, 64, 64);
             label3.Location = new Point(3, 97);
             label3.Name = "label3";
-            label3.Size = new Size(133, 25);
+            label3.Size = new Size(92, 25);
             label3.TabIndex = 3;
-            label3.Text = "Category: {cat}";
+            label3.Text = "Category:";
             // 
             // label2
             // 
@@ -168,9 +168,9 @@
             label2.ForeColor = Color.FromArgb(64, 64, 64);
             label2.Location = new Point(3, 61);
             label2.Name = "label2";
-            label2.Size = new Size(147, 25);
+            label2.Size = new Size(80, 25);
             label2.TabIndex = 2;
-            label2.Text = "Author: {author}";
+            label2.Text = "Author: ";
             // 
             // label7
             // 
@@ -181,9 +181,9 @@
             label7.ForeColor = Color.FromArgb(64, 64, 64);
             label7.Location = new Point(3, 24);
             label7.Name = "label7";
-            label7.Size = new Size(104, 25);
+            label7.Size = new Size(53, 25);
             label7.TabIndex = 1;
-            label7.Text = "Title: {title}";
+            label7.Text = "Title:";
             // 
             // dataGridView1
             // 
@@ -193,7 +193,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(652, 442);
             dataGridView1.TabIndex = 1;
-         
             // 
             // label1
             // 

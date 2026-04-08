@@ -63,9 +63,15 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            this.Hide();
+            var result = MessageBox.Show("Are you sure you want to go back to the login screen?",
+                                 "Switch Account",
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Restart();
+                Environment.Exit(0);
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
