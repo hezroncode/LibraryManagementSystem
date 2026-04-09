@@ -45,13 +45,14 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
 
             try
             {
-                string query = "INSERT INTO Book (title, author_id, yearpublished, category_id, total_copies) VALUES (@title, @authId, @yearpub, @catId, @total)";
+                string query = "INSERT INTO Book (title, author_id, yearpublished, category_id, total_copies, available_copies) VALUES (@title, @authId, @yearpub, @catId, @total, @available)";
                 MySqlParameter[] parameters = {
                     new MySqlParameter("@title", title),
                     new MySqlParameter("@authId", authorId),
                     new MySqlParameter("@yearpub", yearpublished),
                     new MySqlParameter("@catId", categoryId),
-                    new MySqlParameter("@total", totalCopies)
+                    new MySqlParameter("@total", totalCopies),
+                    new MySqlParameter("@available", totalCopies)
                 };
                 dbhelper.ExecuteNonQuery(query, parameters);
                 MessageBox.Show($"Book '{title}' added successfully!");

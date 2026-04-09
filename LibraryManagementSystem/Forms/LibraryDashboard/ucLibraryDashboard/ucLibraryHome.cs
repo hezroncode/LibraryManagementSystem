@@ -15,6 +15,7 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
     public partial class ucLibraryHome : UserControl
     {
         private DatabaseHelper dbhelper;
+        private int selectedbookID = -1;
         public ucLibraryHome()
         {
             InitializeComponent();
@@ -38,6 +39,27 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                selectedbookID = Convert.ToInt32(row.Cells["BookID"].Value);
+                string title = row.Cells["Title"].Value.ToString();
+                string author = row.Cells["Author"].Value.ToString();
+                string category = row.Cells["Category"].Value.ToString();
+                int yearpublished = Convert.ToInt32(row.Cells["Year Published"].Value);
+                int totalcopies = Convert.ToInt32(row.Cells["Total Copies"].Value);
+
+
+                label1.Text = $"Title: {title}";
+                label2.Text = $"Author: {author}";
+                label3.Text = $"Category: {category}";
+                label4.Text = $"Year Published: {yearpublished}";
+
+            }
         }
     }
 }

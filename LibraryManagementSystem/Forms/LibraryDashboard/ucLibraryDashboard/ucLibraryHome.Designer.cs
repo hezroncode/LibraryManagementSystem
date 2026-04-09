@@ -152,7 +152,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(67, 409);
+            button2.Location = new Point(72, 403);
             button2.Name = "button2";
             button2.Size = new Size(202, 52);
             button2.TabIndex = 4;
@@ -268,6 +268,7 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(651, 443);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // ucLibraryHome
             // 

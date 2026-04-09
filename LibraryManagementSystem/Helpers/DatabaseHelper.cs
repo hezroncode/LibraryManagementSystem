@@ -68,7 +68,7 @@ namespace ColegioLibrarySystem.Helpers
         }
         public DataTable GetBooks(string searchquery = "", int categoryId = 0, int authorID = 0)
         {
-            string query = @"SELECT b.book_id AS 'BookID', b.title AS Title, a.author_name AS Author, c.category_name AS Category, b.yearpublished AS 'Year Published', b.total_copies AS 'Total Copies'
+            string query = @"SELECT b.book_id AS 'BookID', b.title AS Title, a.author_name AS Author, c.category_name AS Category, b.yearpublished AS 'Year Published', b.total_copies AS 'Total Copies', b.available_copies AS 'Available Copies'
                            FROM book b
                            JOIN author a ON b.author_id = a.author_id
                            JOIN Category c ON b.category_id = c.category_id
