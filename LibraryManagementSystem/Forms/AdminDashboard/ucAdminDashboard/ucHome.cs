@@ -48,7 +48,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             dataGridView2.DataSource = dtUser;
         }
         private void LoadTransaction(string searchqueary = "")
-        { 
+        {
             DataTable dtTransaction = dbhelper.GetTransactions(searchqueary);
             dataGridView1.DataSource = dtTransaction;
         }
@@ -60,6 +60,11 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             LoadCategories();
             LoadUsers();
             LoadTransaction();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ColegioLibrarySystem.Helpers;
+using ColegioLibrarySystem.Models;
 
 namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
 {
@@ -22,6 +23,7 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             dbhelper = new DatabaseHelper();
             LoadBooks();
             LoadCategory();
+            
         }
         private void LoadBooks(string searchqueary = "", int categoryId = 0, int authorID = 0)
         {
@@ -35,12 +37,6 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             comboBox1.DisplayMember = "category_name";
             comboBox1.ValueMember = "category_id";
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -60,6 +56,35 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
                 label4.Text = $"Year Published: {yearpublished}";
 
             }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (selectedbookID == -1)
+            {
+                MessageBox.Show("Please select a book.");
+                return;
+            }
+            int currentuserID = Session.UserID;
+            string currentuserRole = Session.Role;
+
+            var (success, message) = dbhelper.BorrowBook(currentuserID, currentuserRole, selectedbookID);
+            if (success)
+            {
+                MessageBox.Show(message, "Book borrowed succesfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadBooks();
+                ClearOverview();
+            }
+            else 
+            {
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void ClearOverview()
+        {
+            label1.Text = "Title:";
+            label2.Text = "Author:";
+            label3.Text = "Category:";
+            label4.Text = "Year Published:";
         }
     }
 }
