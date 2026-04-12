@@ -23,12 +23,24 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             dbhelper = new DatabaseHelper();
             LoadBooks();
             LoadCategory();
-            
+
+            if (Session.Role == "Student")
+            {
+                numericUpDown1.Value = 1;
+                numericUpDown1.Enabled = false; // Grays it out
+            }
+
         }
-        private void LoadBooks(string searchqueary = "", int categoryId = 0, int authorID = 0)
+        private void LoadBooks(string searchquery = "", int categoryId = 0, int authorID = 0)
         {
-            DataTable dtBooks = dbhelper.GetBooks(searchqueary, categoryId, authorID);
+            DataTable dtBooks = dbhelper.GetBooks(searchquery, categoryId, authorID);
             dataGridView1.DataSource = dtBooks;
+
+            // UX FIX: Hide the BookID column so the grid looks cleaner to the user
+            if (dataGridView1.Columns["BookID"] != null)
+            {
+                dataGridView1.Columns["BookID"].Visible = false;
+            }
         }
         private void LoadCategory()
         {
@@ -37,7 +49,41 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             comboBox1.DisplayMember = "category_name";
             comboBox1.ValueMember = "category_id";
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (selectedbookID == -1)
+            {
+                MessageBox.Show("Please select a book.");
+                return;
+            }
+
+            int qty = numericUpDown1.Value > 0 ? (int)numericUpDown1.Value : 1;
+            int currentuserID = Session.UserID;
+            string currentuserRole = Session.Role;
+
+            var (success, message) = dbhelper.BorrowBook(currentuserID, currentuserRole, selectedbookID, qty);
+
+            if (success)
+            {
+                MessageBox.Show(message, "Book borrowed successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadBooks();
+                ClearOverview();
+                selectedbookID = -1;
+            }
+            else
+            {
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void ClearOverview()
+        {
+            label1.Text = "Title:";
+            label2.Text = "Author:";
+            label3.Text = "Category:";
+            label4.Text = "Year Published:";
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -56,35 +102,7 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
                 label4.Text = $"Year Published: {yearpublished}";
 
             }
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (selectedbookID == -1)
-            {
-                MessageBox.Show("Please select a book.");
-                return;
-            }
-            int currentuserID = Session.UserID;
-            string currentuserRole = Session.Role;
 
-            var (success, message) = dbhelper.BorrowBook(currentuserID, currentuserRole, selectedbookID);
-            if (success)
-            {
-                MessageBox.Show(message, "Book borrowed succesfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadBooks();
-                ClearOverview();
-            }
-            else 
-            {
-                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void ClearOverview()
-        {
-            label1.Text = "Title:";
-            label2.Text = "Author:";
-            label3.Text = "Category:";
-            label4.Text = "Year Published:";
         }
     }
 }

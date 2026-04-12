@@ -86,6 +86,7 @@
             button2.TabIndex = 4;
             button2.Text = "Confirm Return";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label6
             // 
@@ -131,7 +132,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(250, 203);
             panel4.TabIndex = 2;
-            panel4.Paint += panel4_Paint;
             // 
             // label4
             // 
@@ -187,12 +187,19 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.BackgroundColor = Color.Gainsboro;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(40, 89);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(652, 442);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellClick += dataGridView1_CellClick_1;
             // 
             // label1
             // 
@@ -206,7 +213,6 @@
             label1.Size = new Size(222, 38);
             label1.TabIndex = 0;
             label1.Text = "Borowed Books";
-            label1.Click += label1_Click;
             // 
             // ucBorrowed
             // 

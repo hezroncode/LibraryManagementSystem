@@ -6,7 +6,7 @@ namespace ColegioLibrarySystem.Helpers
     public class DatabaseHelper
     {
         // e adjust lang ang port if dili 3306 ang gamit sa inyong xampp
-        private string connectionString = "Server=localhost;Database=librarymanagementdb;Uid=root;Pwd=;";
+        private string connectionString = "Server=localhost;Database=librarymanagementdb;Uid=root;Pwd=;Convert Zero Datetime=True;";
 
         public MySqlConnection GetConnection()
         {
@@ -162,84 +162,166 @@ namespace ColegioLibrarySystem.Helpers
                     return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
                 }
         }
-
-        public (bool success, string message) BorrowBook(int userId, string userRole, int bookId)
+        public DataTable GetCurrentBorrowedBooks(int userId)
         {
-            if (userRole == "Student" && HasAlreadyBorrowed(userId, bookId))
-                return (false, "Students can only borrow 1 copy per book.");
+            string query = @"SELECT 
+                        b.book_id AS 'BookID',
+                        b.title AS 'Title',
+                        COALESCE(a.author_name, 'Unknown') AS 'Author',
+                        c.category_name AS 'Category',
+                        SUM(CASE 
+                            WHEN LOWER(t.status) = 'borrow' THEN t.quantity 
+                            WHEN LOWER(t.status) = 'returned' THEN -t.quantity 
+                            ELSE 0 
+                        END) AS 'Copies'
+                     FROM book b
+                     INNER JOIN `transaction` t ON b.book_id = t.book_id
+                     LEFT JOIN author a ON b.author_id = a.author_id
+                     LEFT JOIN Category c ON b.category_id = c.category_id
+                     WHERE t.user_id = @userId
+                     GROUP BY b.book_id, b.title, a.author_name, c.category_name
+                     HAVING Copies > 0
+                     ORDER BY b.title ASC";
 
+            MySqlParameter[] parameters = { new MySqlParameter("@userId", userId) };
+            return ExecuteQuery(query, parameters);
+        }
+        public DataTable GetTransactionHistory(int userId)
+        {
+            string query = @"SELECT 
+                        t.transaction_id AS 'ID',
+                        b.title AS 'Title',
+                        t.quantity AS 'Qty',
+                        t.status AS 'Action',
+                        IFNULL(t.borrow_date, t.return_date) AS 'Date'
+                     FROM `transaction` t
+                     JOIN book b ON t.book_id = b.book_id
+                     WHERE t.user_id = @userId
+                     ORDER BY t.transaction_id DESC"; // Shows newest actions at the top
+
+            MySqlParameter[] parameters = { new MySqlParameter("@userId", userId) };
+            return ExecuteQuery(query, parameters);
+        }
+
+        public (bool success, string message) BorrowBook(int userId, string userRole, int bookId, int qty)
+        {
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlTransaction transaction = conn.BeginTransaction();
+                MySqlTransaction sqlTrans = conn.BeginTransaction();
                 try
                 {
-                    // Check available copies
-                    string checkQuery = "SELECT available_copies FROM book WHERE book_id = @bookId";
-                    MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn, transaction);
-                    checkCmd.Parameters.AddWithValue("@bookId", bookId);
-                    int available = Convert.ToInt32(checkCmd.ExecuteScalar());
+                    // 1. STUDENT RULE: Check if they already have this book
+                    if (userRole == "Student")
+                    {
+                        // Force quantity to 1 for students just in case the UI sends a higher number
+                        qty = 1;
 
-                    if (available <= 0)
-                        return (false, "This book is currently out of stock.");
+                        string checkStudent = @"SELECT SUM(CASE WHEN status = 'Borrow' THEN quantity ELSE -quantity END) 
+                                        FROM `transaction` WHERE user_id = @uid AND book_id = @bid";
+                        MySqlCommand checkStudentCmd = new MySqlCommand(checkStudent, conn, sqlTrans);
+                        checkStudentCmd.Parameters.AddWithValue("@uid", userId);
+                        checkStudentCmd.Parameters.AddWithValue("@bid", bookId);
 
-                    // Deduct available copies
-                    string updateBook = "UPDATE book SET available_copies = available_copies - 1 WHERE book_id = @bookId";
-                    MySqlCommand updateCmd = new MySqlCommand(updateBook, conn, transaction);
-                    updateCmd.Parameters.AddWithValue("@bookId", bookId);
-                    updateCmd.ExecuteNonQuery();
+                        object currentBalance = checkStudentCmd.ExecuteScalar();
+                        if (currentBalance != DBNull.Value && Convert.ToInt32(currentBalance) > 0)
+                        {
+                            return (false, "Students can only borrow 1 copy per book. You already have this one!");
+                        }
+                    }
 
-                    // Insert transaction record (quantity = 1 for students, can be dynamic)
-                    string insertQuery = @"INSERT INTO `transaction` (user_id, book_id, quantity, borrow_date, status) 
-                                   VALUES (@userId, @bookId, 1, NOW(), 'Borrow')";
-                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, conn, transaction);
-                    insertCmd.Parameters.AddWithValue("@userId", userId);
-                    insertCmd.Parameters.AddWithValue("@bookId", bookId);
+                    // 2. Check Library Stock
+                    string checkStock = "SELECT available_copies FROM book WHERE book_id = @bid";
+                    MySqlCommand checkStockCmd = new MySqlCommand(checkStock, conn, sqlTrans);
+                    checkStockCmd.Parameters.AddWithValue("@bid", bookId);
+                    int available = Convert.ToInt32(checkStockCmd.ExecuteScalar());
+
+                    if (available < qty) return (false, "Not enough copies available in the library.");
+
+                    // 3. INSERT the Borrow Transaction (Creates a NEW row)
+                    string insertBorrow = @"INSERT INTO `transaction` (user_id, book_id, quantity, borrow_date, status) 
+                                    VALUES (@uid, @bid, @qty, NOW(), 'Borrow')";
+                    MySqlCommand insertCmd = new MySqlCommand(insertBorrow, conn, sqlTrans);
+                    insertCmd.Parameters.AddWithValue("@uid", userId);
+                    insertCmd.Parameters.AddWithValue("@bid", bookId);
+                    insertCmd.Parameters.AddWithValue("@qty", qty);
                     insertCmd.ExecuteNonQuery();
 
-                    transaction.Commit();
+                    // 4. Update Library Stock
+                    string deductStock = "UPDATE book SET available_copies = available_copies - @qty WHERE book_id = @bid";
+                    MySqlCommand deductCmd = new MySqlCommand(deductStock, conn, sqlTrans);
+                    deductCmd.Parameters.AddWithValue("@qty", qty);
+                    deductCmd.Parameters.AddWithValue("@bid", bookId);
+                    deductCmd.ExecuteNonQuery();
+
+                    sqlTrans.Commit();
                     return (true, "Book borrowed successfully!");
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
-                    return (false, "Error: " + ex.Message);
+                    sqlTrans.Rollback();
+                    return (false, "Database Error: " + ex.Message);
                 }
             }
         }
 
-        public (bool success, string message) ReturnBook(int transactionId, int bookId)
+        // Notice we only need the userId and bookId now
+        public (bool success, string message) ReturnBook(int userId, int bookId)
         {
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlTransaction transaction = conn.BeginTransaction();
+                MySqlTransaction sqlTrans = conn.BeginTransaction();
                 try
                 {
-                    // Mark as returned
-                    string updateTransaction = @"UPDATE transaction 
-                                         SET return_date = NOW(), status = 'Returned'
-                                         WHERE transaction_id = @transactionId";
-                    MySqlCommand updateTxCmd = new MySqlCommand(updateTransaction, conn, transaction);
-                    updateTxCmd.Parameters.AddWithValue("@transactionId", transactionId);
-                    updateTxCmd.ExecuteNonQuery();
+                    // 1. Calculate the exact number of copies they CURRENTLY hold (The Balance)
+                    string balanceQuery = @"SELECT SUM(CASE 
+                                        WHEN LOWER(status) = 'borrow' THEN quantity 
+                                        WHEN LOWER(status) = 'returned' THEN -quantity 
+                                        ELSE 0 
+                                    END) 
+                                    FROM `transaction` 
+                                    WHERE user_id = @uid AND book_id = @bid";
 
-                    // Restore available copies
-                    string updateBook = "UPDATE book SET available_copies = available_copies + 1 WHERE book_id = @bookId";
-                    MySqlCommand updateBookCmd = new MySqlCommand(updateBook, conn, transaction);
-                    updateBookCmd.Parameters.AddWithValue("@bookId", bookId);
-                    updateBookCmd.ExecuteNonQuery();
+                    MySqlCommand balanceCmd = new MySqlCommand(balanceQuery, conn, sqlTrans);
+                    balanceCmd.Parameters.AddWithValue("@uid", userId);
+                    balanceCmd.Parameters.AddWithValue("@bid", bookId);
 
-                    transaction.Commit();
-                    return (true, "Book returned successfully!");
+                    object result = balanceCmd.ExecuteScalar();
+                    int outstandingBalance = (result != DBNull.Value) ? Convert.ToInt32(result) : 0;
+
+                    if (outstandingBalance <= 0)
+                    {
+                        return (false, "You don't have any copies of this book to return.");
+                    }
+
+                    // 2. INSERT the Return Transaction for ALL copies
+                    string insertReturn = @"INSERT INTO `transaction` (user_id, book_id, quantity, return_date, status) 
+                                    VALUES (@uid, @bid, @qty, NOW(), 'Returned')";
+                    MySqlCommand insertCmd = new MySqlCommand(insertReturn, conn, sqlTrans);
+                    insertCmd.Parameters.AddWithValue("@uid", userId);
+                    insertCmd.Parameters.AddWithValue("@bid", bookId);
+                    insertCmd.Parameters.AddWithValue("@qty", outstandingBalance); // Returns EVERYTHING they hold
+                    insertCmd.ExecuteNonQuery();
+
+                    // 3. Restore ALL copies back to the Library Stock
+                    string addStock = "UPDATE book SET available_copies = available_copies + @qty WHERE book_id = @bid";
+                    MySqlCommand addCmd = new MySqlCommand(addStock, conn, sqlTrans);
+                    addCmd.Parameters.AddWithValue("@qty", outstandingBalance);
+                    addCmd.Parameters.AddWithValue("@bid", bookId);
+                    addCmd.ExecuteNonQuery();
+
+                    sqlTrans.Commit();
+                    return (true, $"Successfully returned all {outstandingBalance} copy/copies!");
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
-                    return (false, "Error: " + ex.Message);
+                    sqlTrans.Rollback();
+                    return (false, "Database Error: " + ex.Message);
                 }
             }
         }
+
 
         public DataTable GetBorrowedBooksByUser(int userId)
         {
