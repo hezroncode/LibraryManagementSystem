@@ -21,11 +21,6 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             dbhelper = new DatabaseHelper();
             LoadDashboardData();
         }
-        private void LoadTransactions()
-        {
-            // This method can be implemented to load recent transactions or any relevant data for the admin dashboard.
-            // For example, you could query the database for recent book checkouts, returns, or user registrations and display them in a DataGridView or ListView.
-        }
         private void LoadAuthors(string searchqueary = "")
         {
             DataTable dtAuthor = dbhelper.GetAuthors(searchqueary);
@@ -54,7 +49,6 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
         }
         private void LoadDashboardData()
         {
-            LoadTransactions();
             LoadAuthors();
             LoadBooks();
             LoadCategories();

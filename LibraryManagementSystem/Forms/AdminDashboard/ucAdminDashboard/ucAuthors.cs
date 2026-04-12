@@ -1,20 +1,23 @@
-﻿using MySql.Data.MySqlClient;
-using ColegioLibrarySystem.Helpers;
+﻿using ColegioLibrarySystem.Helpers;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibraryManagementSystem.Forms.AdminDashboard
 {
     public partial class ucAuthors : UserControl
     {
         private DatabaseHelper dbHelper;
+        private int selectedauthorid = -1;
         public ucAuthors()
         {
             InitializeComponent();
@@ -65,6 +68,69 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
         private void button8_Click(object sender, EventArgs e)
         {
             LoadAuthors();
+        }
+
+        //Delete
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (selectedauthorid == -1)
+            {
+                MessageBox.Show("Select an author to delete");
+                return;
+            }
+            var result = MessageBox.Show("Are you sure you want to delete this book?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                if (dbHelper.DeleteAuthors(selectedauthorid))
+                {
+                    MessageBox.Show("Author deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadAuthors();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete book. It may be linked to existing transactions.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                selectedauthorid = Convert.ToInt32(row.Cells["Author ID"].Value);
+                textBox1.Text = row.Cells["Author"].Value.ToString();
+                textBox2.Text = row.Cells["Description"].ToString();
+
+            }
+        }
+        //Update
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (selectedauthorid == -1)
+            {
+                MessageBox.Show("Please select an author from the list to update.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string authorname = textBox1.Text.Trim();
+            string authordescription = textBox2.Text.Trim();
+
+            var confirm = MessageBox.Show("Save changes to this book?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                if (dbHelper.UpdateAuthors(selectedauthorid, authorname, authordescription))
+                {
+                    MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadAuthors();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update the book. Please check your data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

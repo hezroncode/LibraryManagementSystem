@@ -129,56 +129,105 @@
             // 
             // dataGridView5
             // 
-            dataGridView5.BackgroundColor = Color.Gainsboro;
+            dataGridView5.AllowUserToAddRows = false;
+            dataGridView5.AllowUserToDeleteRows = false;
+            dataGridView5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView5.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView5.BackgroundColor = Color.Snow;
+            dataGridView5.BorderStyle = BorderStyle.None;
             dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView5.GridColor = Color.Snow;
             dataGridView5.Location = new Point(690, 246);
             dataGridView5.Margin = new Padding(3, 2, 3, 2);
+            dataGridView5.MultiSelect = false;
             dataGridView5.Name = "dataGridView5";
+            dataGridView5.ReadOnly = true;
+            dataGridView5.RowHeadersVisible = false;
             dataGridView5.RowHeadersWidth = 51;
             dataGridView5.Size = new Size(262, 149);
             dataGridView5.TabIndex = 4;
             // 
             // dataGridView4
             // 
-            dataGridView4.BackgroundColor = Color.Gainsboro;
+            dataGridView4.AllowUserToAddRows = false;
+            dataGridView4.AllowUserToDeleteRows = false;
+            dataGridView4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView4.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView4.BackgroundColor = Color.Snow;
+            dataGridView4.BorderStyle = BorderStyle.None;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView4.Location = new Point(690, 49);
             dataGridView4.Margin = new Padding(3, 2, 3, 2);
+            dataGridView4.MultiSelect = false;
             dataGridView4.Name = "dataGridView4";
+            dataGridView4.ReadOnly = true;
+            dataGridView4.RowHeadersVisible = false;
             dataGridView4.RowHeadersWidth = 51;
+            dataGridView4.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView4.Size = new Size(262, 172);
             dataGridView4.TabIndex = 3;
             // 
             // dataGridView3
             // 
-            dataGridView3.BackgroundColor = Color.Gainsboro;
+            dataGridView3.AllowUserToAddRows = false;
+            dataGridView3.AllowUserToDeleteRows = false;
+            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView3.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView3.BackgroundColor = Color.Snow;
+            dataGridView3.BorderStyle = BorderStyle.None;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.GridColor = Color.DarkViolet;
             dataGridView3.Location = new Point(396, 296);
             dataGridView3.Margin = new Padding(3, 2, 3, 2);
+            dataGridView3.MultiSelect = false;
             dataGridView3.Name = "dataGridView3";
+            dataGridView3.ReadOnly = true;
+            dataGridView3.RowHeadersVisible = false;
             dataGridView3.RowHeadersWidth = 51;
+            dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView3.Size = new Size(262, 100);
             dataGridView3.TabIndex = 2;
             // 
             // dataGridView2
             // 
-            dataGridView2.BackgroundColor = Color.Gainsboro;
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView2.BackgroundColor = Color.Snow;
+            dataGridView2.BorderStyle = BorderStyle.None;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.GridColor = Color.DarkViolet;
             dataGridView2.Location = new Point(396, 49);
             dataGridView2.Margin = new Padding(3, 2, 3, 2);
+            dataGridView2.MultiSelect = false;
             dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowHeadersVisible = false;
             dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.Size = new Size(262, 221);
             dataGridView2.TabIndex = 1;
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.Gainsboro;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.BackgroundColor = Color.Snow;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.DarkViolet;
             dataGridView1.Location = new Point(24, 49);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(343, 346);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;

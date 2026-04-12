@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+using System.Net.Http.Headers;
 
 namespace ColegioLibrarySystem.Helpers
 {
@@ -66,7 +67,7 @@ namespace ColegioLibrarySystem.Helpers
         }
         public DataTable GetBooks(string searchquery = "", int categoryId = 0, int authorID = 0)
         {
-            string query = @"SELECT b.book_id AS 'BookID', b.title AS Title, a.author_name AS Author, c.category_name AS Category, b.yearpublished AS 'Year Published', b.total_copies AS 'Total Copies', b.available_copies AS 'Available Copies'
+            string query = @"SELECT b.book_id AS 'Book ID', b.title AS Title, a.author_name AS Author, c.category_name AS Category, b.yearpublished AS 'Year Published', b.total_copies AS 'Total Copies', b.available_copies AS 'Available Copies'
                            FROM book b
                            JOIN author a ON b.author_id = a.author_id
                            JOIN Category c ON b.category_id = c.category_id
@@ -82,9 +83,9 @@ namespace ColegioLibrarySystem.Helpers
         }
         public DataTable GetAuthors(string searchquery = "")
         {
-            string query = @"SELECT author_id, author_name FROM Author
-                            WHERE (@search IS NULL OR author_name LIKE @search)
-                            ORDER BY author_name ASC";
+            string query = @"SELECT author_id AS 'Author ID', author_name AS 'Author', description AS 'Description' FROM Author
+                            WHERE (@search IS NULL OR 'Author' LIKE @search)
+                            ORDER BY 'Author' ASC";
             MySqlParameter[] parameters = {
                 new MySqlParameter("@search", string.IsNullOrEmpty(searchquery) ? (object)DBNull.Value : "%" + searchquery + "%")
             };
@@ -93,9 +94,9 @@ namespace ColegioLibrarySystem.Helpers
         }
         public DataTable GetCategories(string searchquery = "")
         {
-            string query = @"SELECT category_id, category_name FROM Category
-                           WHERE (@search IS NULL OR category_name LIKE @search)
-                           ORDER BY category_id ASC";
+            string query = @"SELECT category_id AS 'Category ID', category_name AS 'Category' FROM Category
+                           WHERE (@search IS NULL OR 'Category' LIKE @search)
+                           ORDER BY 'CategoryID' ASC";
             MySqlParameter[] parameters = {
                 new MySqlParameter("@search", string.IsNullOrEmpty(searchquery) ? (object)DBNull.Value : "%" + searchquery + "%")
             };
@@ -103,8 +104,8 @@ namespace ColegioLibrarySystem.Helpers
         }
         public DataTable GetUsers(string searchquery = "")
         {
-            string query = @"SELECT user_id AS 'User ID', fullname AS 'Fullname', username AS 'Username', role AS 'Role' FROM User
-                           WHERE (@search IS NULL OR user_id = @search OR username = @search)";
+            string query = @"SELECT user_id AS 'User ID', fullname AS 'Fullname', username AS 'Username', password AS 'Password', role AS 'Role' FROM User
+                           WHERE (@search IS NULL OR 'User ID' = @search OR 'Username' = @search)";
             MySqlParameter[] parameters = {
                 new MySqlParameter("@search", string.IsNullOrEmpty(searchquery) ? (object)DBNull.Value : "%" + searchquery + "%")
             };
@@ -321,8 +322,6 @@ namespace ColegioLibrarySystem.Helpers
                 }
             }
         }
-
-
         public DataTable GetBorrowedBooksByUser(int userId)
         {
             string query = @"SELECT t.transaction_id AS 'TransactionID',
@@ -338,6 +337,92 @@ namespace ColegioLibrarySystem.Helpers
         new MySqlParameter("@userId", userId)
     };
             return ExecuteQuery(query, parameters);
+        }
+        public bool DeleteBooks(int bookid)
+        {
+            string query = "DELETE FROM `book` WHERE book_id = @id";
+            MySqlParameter[] parameters = { new MySqlParameter("@id", bookid) };
+
+            return ExecuteNonQuery(query, parameters) > 0;
+        }
+        public bool DeleteAuthors(int authorid)
+        {
+            string query = "DELETE FROM `author` WHERE author_id = @id";
+            MySqlParameter[] parameters = { new MySqlParameter("@id", authorid) };
+            return ExecuteNonQuery(query, parameters) > 0;
+        }
+        public bool DeleteCategory(int catid)
+        {
+            string query = "DELETE FROM `category` WHERE category_id = @id";
+            MySqlParameter[] parameters = { new MySqlParameter("@id", catid) };
+            return ExecuteNonQuery(query, parameters) > 0;
+        }
+        public bool DeleteUsers(int userid)
+        {
+            string query = "DELETE FROM `user` WHERE user_id = @id";
+            MySqlParameter[] parameters = { new MySqlParameter("@id", userid) };
+            return ExecuteNonQuery(query, parameters) > 0;
+        }
+        public bool UpdateBook(int bookId, string title, int authorId, int categoryId, int year, int totalCopies)
+        {
+            string query = @"UPDATE `book` 
+                           SET title = @title, 
+                           author_id = @authorId, 
+                           category_id = @categoryId, 
+                           yearpublished = @year, 
+                           total_copies = @copies 
+                           WHERE book_id = @bookId";
+            MySqlParameter[] parameters = {
+            new MySqlParameter("@title", title),
+            new MySqlParameter("@authorId", authorId),
+            new MySqlParameter("@categoryId", categoryId),
+            new MySqlParameter("@year", year),
+            new MySqlParameter("@copies", totalCopies),
+            new MySqlParameter("@bookId", bookId)
+            };
+            return ExecuteNonQuery(query, parameters) > 0;
+        }
+        public bool UpdateAuthors(int authorid, string authorname, string description)
+        {
+            string query = @"UPDATE `author`
+                           SET author_name = @authorname,
+                           description = @desc
+                           WHILE author_id = @authorid";
+            MySqlParameter[] parameters = {
+            new MySqlParameter("@authorname", authorname),
+            new MySqlParameter("@desc", description),
+            new MySqlParameter("@authorid", authorid)
+            };
+            return ExecuteNonQuery(query, parameters) > 0;
+        }
+        public bool UpdateUsers(int userid, string fullname, string username, string password, string role)
+        {
+            string query = @"UPDATE `user`
+                            SET fullname = @fullname,
+                            username = @username,
+                            password = @password,
+                            role = @role
+                            WHERE user_id = @userid";
+            MySqlParameter[] parameters = {
+            new MySqlParameter("@fullname", fullname),
+            new MySqlParameter("@username", username),
+            new MySqlParameter("@password", password),
+            new MySqlParameter("@role", role),
+            new MySqlParameter("@userid", userid)
+            };
+            return ExecuteNonQuery(query, parameters) > 0;
+        }
+        public bool UpdateCategory(int catid, string catname)
+        {
+            string query = @"UPDATE `category`
+                           SET category_name = @catname
+                           WHERE category_id = @catid";
+            MySqlParameter[] parameters = {
+            new MySqlParameter("@catname", catname),
+            new MySqlParameter("catid", catid)
+            };
+            return ExecuteNonQuery(query, parameters) > 0;
+                           
         }
     }
 }

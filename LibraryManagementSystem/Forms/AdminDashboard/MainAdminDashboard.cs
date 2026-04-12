@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ColegioLibrarySystem.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,7 +59,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
 
         private void MainAdminDashboard_Load(object sender, EventArgs e)
         {
-
+            label2.Text = $"Welcome {Session.FullName}";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
