@@ -326,6 +326,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(30, 30, 30);
             Controls.Add(button1);
             Controls.Add(textBox3);
             Controls.Add(button7);
@@ -338,7 +339,7 @@
             Controls.Add(panel2);
             Margin = new Padding(3, 2, 3, 2);
             Name = "ucAuthors";
-            Size = new Size(985, 428);
+            Size = new Size(1212, 630);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel4.ResumeLayout(false);

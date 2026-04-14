@@ -1,16 +1,6 @@
 ﻿using ColegioLibrarySystem.Helpers;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibraryManagementSystem.Forms.AdminDashboard
 {
@@ -102,7 +92,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
 
                 selectedauthorid = Convert.ToInt32(row.Cells["Author ID"].Value);
                 textBox1.Text = row.Cells["Author"].Value.ToString();
-                textBox2.Text = row.Cells["Description"].ToString();
+                textBox2.Text = row.Cells["Description"].Value.ToString();
 
             }
         }

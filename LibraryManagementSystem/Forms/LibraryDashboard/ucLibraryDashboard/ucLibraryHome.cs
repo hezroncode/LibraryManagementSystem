@@ -46,8 +46,8 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
         {
             DataTable dtCategory = dbhelper.GetCategories();
             comboBox1.DataSource = dtCategory;
-            comboBox1.DisplayMember = "category_name";
-            comboBox1.ValueMember = "category_id";
+            comboBox1.DisplayMember = "Category";
+            comboBox1.ValueMember = "Category ID";
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -88,7 +88,7 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                selectedbookID = Convert.ToInt32(row.Cells["BookID"].Value);
+                selectedbookID = Convert.ToInt32(row.Cells["Book ID"].Value);
                 string title = row.Cells["Title"].Value.ToString();
                 string author = row.Cells["Author"].Value.ToString();
                 string category = row.Cells["Category"].Value.ToString();

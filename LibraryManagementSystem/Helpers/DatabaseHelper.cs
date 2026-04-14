@@ -71,7 +71,7 @@ namespace ColegioLibrarySystem.Helpers
                            FROM book b
                            JOIN author a ON b.author_id = a.author_id
                            JOIN Category c ON b.category_id = c.category_id
-                           WHERE (@search IS NULL OR b.title LIKE @search)
+                           WHERE (@search IS NULL OR b.title LIKE @search OR a.author_name LIKE @search)
                            AND (@catId = 0 OR b.category_id = @catId) 
                            AND (@authId = 0 OR b.author_id = @authId)";
             MySqlParameter[] parameters = {
@@ -84,8 +84,8 @@ namespace ColegioLibrarySystem.Helpers
         public DataTable GetAuthors(string searchquery = "")
         {
             string query = @"SELECT author_id AS 'Author ID', author_name AS 'Author', description AS 'Description' FROM Author
-                            WHERE (@search IS NULL OR 'Author' LIKE @search)
-                            ORDER BY 'Author' ASC";
+                            WHERE (@search IS NULL OR author_name LIKE @search)
+                            ORDER BY author_name ASC";
             MySqlParameter[] parameters = {
                 new MySqlParameter("@search", string.IsNullOrEmpty(searchquery) ? (object)DBNull.Value : "%" + searchquery + "%")
             };
@@ -96,7 +96,7 @@ namespace ColegioLibrarySystem.Helpers
         {
             string query = @"SELECT category_id AS 'Category ID', category_name AS 'Category' FROM Category
                            WHERE (@search IS NULL OR 'Category' LIKE @search)
-                           ORDER BY 'CategoryID' ASC";
+                           ORDER BY category_id ASC";
             MySqlParameter[] parameters = {
                 new MySqlParameter("@search", string.IsNullOrEmpty(searchquery) ? (object)DBNull.Value : "%" + searchquery + "%")
             };
@@ -104,8 +104,13 @@ namespace ColegioLibrarySystem.Helpers
         }
         public DataTable GetUsers(string searchquery = "")
         {
-            string query = @"SELECT user_id AS 'User ID', fullname AS 'Fullname', username AS 'Username', password AS 'Password', role AS 'Role' FROM User
-                           WHERE (@search IS NULL OR 'User ID' = @search OR 'Username' = @search)";
+            string query = @"SELECT user_id AS 'User ID', 
+                                    fullname AS 'Fullname', 
+                                    username AS 'Username', 
+                                    password AS 'Password', 
+                                    role AS 'Role' 
+                           FROM User
+                           WHERE (@search IS NULL OR fullname LIKE @search OR username LIKE @search)";
             MySqlParameter[] parameters = {
                 new MySqlParameter("@search", string.IsNullOrEmpty(searchquery) ? (object)DBNull.Value : "%" + searchquery + "%")
             };

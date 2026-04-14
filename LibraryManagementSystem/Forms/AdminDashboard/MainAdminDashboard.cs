@@ -81,5 +81,10 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             uc4.Show();
             addUserControl(uc4);
         }
+
+        private void pnlContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

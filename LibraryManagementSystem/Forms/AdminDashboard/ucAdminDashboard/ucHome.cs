@@ -20,6 +20,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             InitializeComponent();
             dbhelper = new DatabaseHelper();
             LoadDashboardData();
+            //StyleDataGridView(dataGridView1);
         }
         private void LoadAuthors(string searchqueary = "")
         {
@@ -55,10 +56,39 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             LoadUsers();
             LoadTransaction();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /*private void StyleDataGridView(DataGridView dgv)
         {
+            // Overall grid
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.BackgroundColor = Color.White;
+            dgv.GridColor = Color.FromArgb(230, 230, 230);
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv.RowHeadersVisible = false;
+            dgv.AllowUserToResizeRows = false;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-        }
+            // Header
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(112, 0, 192);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9f, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
+            dgv.ColumnHeadersHeight = 36;
+            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+            // Rows
+            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 9f);
+            dgv.DefaultCellStyle.ForeColor = Color.FromArgb(40, 40, 40);
+            dgv.DefaultCellStyle.BackColor = Color.White;
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 180, 255);
+            dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(40, 40, 40);
+            dgv.DefaultCellStyle.Padding = new Padding(5);
+            dgv.RowTemplate.Height = 32;
+
+            // Alternating row color
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 242, 255);
+        }*/
+
     }
 }

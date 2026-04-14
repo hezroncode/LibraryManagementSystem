@@ -1,16 +1,6 @@
 ﻿using ColegioLibrarySystem.Helpers;
-using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace LibraryManagementSystem.Forms.AdminDashboard
 {
@@ -18,29 +8,26 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
     {
         private DatabaseHelper dbhelper;
         private int selectedbookid = -1;
+        private int selectedAuthorId = -1;
+
         public ucBooks()
         {
-
             InitializeComponent();
-
             dbhelper = new DatabaseHelper();
-
             LoadBooks();
-            LoadAuthors();
             LoadCategories();
-
         }
+
         private void button5_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrEmpty(textBox1.Text) || comboBox2.SelectedValue == null || !int.TryParse(textBox3.Text, out int year) || year <= 0 || comboBox1.SelectedValue == null || numericUpDown1.Value <= 0)
+            if (string.IsNullOrEmpty(textBox1.Text) || selectedAuthorId == -1 || !int.TryParse(textBox3.Text, out int year) || year <= 0 || comboBox1.SelectedValue == null || numericUpDown1.Value <= 0)
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
             string title = textBox1.Text.Trim();
-            int authorId = Convert.ToInt32(comboBox2.SelectedValue);
+            int authorId = selectedAuthorId;
             int yearpublished = Convert.ToInt32(textBox3.Text.Trim());
             int categoryId = Convert.ToInt32(comboBox1.SelectedValue);
             int totalCopies = (int)numericUpDown1.Value;
@@ -61,6 +48,8 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
                 LoadBooks();
                 textBox1.Clear();
                 textBox3.Clear();
+                textBox4.Clear();
+                selectedAuthorId = -1;
                 numericUpDown1.Value = 1;
             }
             catch (Exception ex)
@@ -68,17 +57,11 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
                 MessageBox.Show("Something went wrong: " + ex.Message);
             }
         }
+
         private void LoadBooks(string searchqueary = "", int categoryId = 0, int authorID = 0)
         {
             DataTable dtBooks = dbhelper.GetBooks(searchqueary, categoryId, authorID);
             dataGridView1.DataSource = dtBooks;
-        }
-        private void LoadAuthors()
-        {
-            DataTable dtAuthors = dbhelper.GetAuthors();
-            comboBox2.DataSource = dtAuthors;
-            comboBox2.DisplayMember = "Author";
-            comboBox2.ValueMember = "Author ID";
         }
 
         private void LoadCategories()
@@ -107,8 +90,15 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
                 MessageBox.Show("Please select a book from the list to update.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            if (selectedAuthorId == -1)
+            {
+                MessageBox.Show("Please select a valid author from the suggestions.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string title = textBox1.Text.Trim();
-            int authorId = Convert.ToInt32(comboBox2.SelectedValue);
+            int authorId = selectedAuthorId;
             int yearpublished = Convert.ToInt32(textBox3.Text.Trim());
             int categoryId = Convert.ToInt32(comboBox1.SelectedValue);
             int totalCopies = (int)numericUpDown1.Value;
@@ -136,14 +126,17 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
 
                 selectedbookid = Convert.ToInt32(row.Cells["Book ID"].Value);
                 textBox1.Text = row.Cells["Title"].Value.ToString();
-                comboBox2.Text = row.Cells["Author"].Value.ToString();
+                textBox4.Text = row.Cells["Author"].Value.ToString();
                 textBox3.Text = row.Cells["Year Published"].Value.ToString();
                 comboBox1.Text = row.Cells["Category"].Value.ToString();
                 numericUpDown1.Value = Convert.ToDecimal(row.Cells["Total Copies"].Value);
 
-
+                DataTable dt = dbhelper.GetAuthors(row.Cells["Author"].Value.ToString());
+                if (dt.Rows.Count > 0)
+                    selectedAuthorId = Convert.ToInt32(dt.Rows[0]["Author ID"]);
             }
         }
+
         private void button6_Click_1(object sender, EventArgs e)
         {
             if (selectedbookid == -1)
@@ -156,26 +149,55 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
 
             if (result == DialogResult.Yes)
             {
-                // 3. Call the Helper
                 if (dbhelper.DeleteBooks(selectedbookid))
                 {
                     MessageBox.Show("Book deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // 4. Refresh UI
                     LoadBooks();
                 }
                 else
                 {
-                    // This happens if the book was already deleted or if there is a foreign key error
                     MessageBox.Show("Failed to delete book. It may be linked to existing transactions.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null)
+            {
+                string authorName = listBox1.SelectedItem.ToString();
+                textBox4.Text = authorName;
+                listBox1.Visible = false;
 
+                DataTable dt = dbhelper.GetAuthors(authorName);
+                if (dt.Rows.Count > 0)
+                    selectedAuthorId = Convert.ToInt32(dt.Rows[0]["Author ID"]);
+            }
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
+            string search = textBox4.Text.Trim();
 
+            if (string.IsNullOrEmpty(search))
+            {
+                listBox1.Visible = false;
+                selectedAuthorId = -1;
+                return;
+            }
+
+            listBox1.Items.Clear();
+
+            DataTable authors = dbhelper.GetAuthors(search);
+            foreach (DataRow row in authors.Rows)
+                listBox1.Items.Add(row["Author"].ToString());
+
+            listBox1.Visible = listBox1.Items.Count > 0;
+        }
+
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
+            Task.Delay(200).ContinueWith(_ =>
+                this.Invoke(() => listBox1.Visible = false));
         }
     }
 }

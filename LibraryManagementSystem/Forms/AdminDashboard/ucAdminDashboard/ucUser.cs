@@ -1,15 +1,6 @@
 ﻿using ColegioLibrarySystem.Helpers;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LibraryManagementSystem.Forms.AdminDashboard
 {
@@ -25,12 +16,18 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             LoadUsers();
 
         }
+        //Add users
         private void button5_Click(object sender, EventArgs e)
         {
             string fullName = textBox1.Text.Trim();
             string username = textBox2.Text.Trim();
             string password = textBox4.Text.Trim();
             string role = comboBox1.GetItemText(comboBox1.SelectedItem).Trim();
+
+            if (role == "Admin")
+            {
+                AdminCodePrompt(role);
+            }
 
 
             if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
@@ -62,35 +59,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             }
 
         }
-        private void LoadUsers(string searchQueary = "")
-        {
-            DataTable dtUser = dbhelper.GetUsers(searchQueary);
-            dataGridView1.DataSource = dtUser;
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string search = textBox3.Text.Trim();
-            LoadUsers(search);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            LoadUsers();
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
-                selecteduserid = Convert.ToInt32(row.Cells["User ID"].Value);
-                textBox1.Text = row.Cells["Fullname"].Value.ToString();
-                textBox2.Text = row.Cells["Username"].Value.ToString();
-                textBox4.Text = row.Cells["Password"].Value.ToString();
-                comboBox1.Text = row.Cells["Role"].Value.ToString();
-            }
-        }
+        //Delete users
         private void button6_Click(object sender, EventArgs e)
         {
             if (selecteduserid == -1)
@@ -102,16 +71,19 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             var result = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                // 3. Call the Helper
                 if (dbhelper.DeleteBooks(selecteduserid))
                 {
                     MessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // 4. Refresh UI
                     LoadUsers();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete user. It may be linked to existing transactions.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+        //Update users
         private void button7_Click(object sender, EventArgs e)
         {
             if (selecteduserid == -1)
@@ -135,6 +107,47 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
                 else
                 {
                     MessageBox.Show("Failed to update the book. Please check your data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        //Loads all users in the database for usage
+        private void LoadUsers(string searchQueary = "")
+        {
+            DataTable dtUser = dbhelper.GetUsers(searchQueary);
+            dataGridView1.DataSource = dtUser;
+        }
+        //Search
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string search = textBox3.Text.Trim();
+            LoadUsers(search);
+        }
+        //Refresh
+        private void button8_Click(object sender, EventArgs e)
+        {
+            LoadUsers();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                selecteduserid = Convert.ToInt32(row.Cells["User ID"].Value);
+                textBox1.Text = row.Cells["Fullname"].Value.ToString();
+                textBox2.Text = row.Cells["Username"].Value.ToString();
+                textBox4.Text = row.Cells["Password"].Value.ToString();
+                comboBox1.Text = row.Cells["Role"].Value.ToString();
+            }
+        }
+        private void AdminCodePrompt(string role)
+        {
+            using (AdminCode codewindow = new AdminCode())
+            {
+                if (codewindow.ShowDialog() == DialogResult.OK)
+                {
+                    codewindow.Close();
                 }
             }
         }

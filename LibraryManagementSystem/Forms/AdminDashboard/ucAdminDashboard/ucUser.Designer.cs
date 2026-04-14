@@ -188,7 +188,7 @@
             // 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Student", "Instructor" });
+            comboBox1.Items.AddRange(new object[] { "Student", "Instructor", "Admin" });
             comboBox1.Location = new Point(4, 8);
             comboBox1.Margin = new Padding(3, 2, 3, 2);
             comboBox1.Name = "comboBox1";
