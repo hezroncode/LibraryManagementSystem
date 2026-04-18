@@ -1,13 +1,5 @@
-﻿using LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ColegioLibrarySystem.Models;
+using LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard;
 
 namespace LibraryManagementSystem.Forms.UserDashboard
 {
@@ -18,6 +10,7 @@ namespace LibraryManagementSystem.Forms.UserDashboard
             InitializeComponent();
             ucLibraryHome ucdefault = new ucLibraryHome();
             addUserControl(ucdefault);
+            label2.Text = $"Welcome {Session.FullName}";
         }
 
         private void addUserControl(UserControl userControl)
@@ -59,5 +52,9 @@ namespace LibraryManagementSystem.Forms.UserDashboard
             }
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -103,8 +103,8 @@
             button5.AutoSize = true;
             button5.BackColor = Color.Transparent;
             button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseDownBackColor = Color.DimGray;
-            button5.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button5.FlatAppearance.MouseDownBackColor = Color.FromArgb(131, 81, 232);
+            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(131, 81, 232);
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button5.ForeColor = Color.FromArgb(246, 242, 255);
@@ -122,8 +122,8 @@
             button4.AutoSize = true;
             button4.BackColor = Color.Transparent;
             button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.MouseDownBackColor = Color.DimGray;
-            button4.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(131, 81, 232);
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(131, 81, 232);
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button4.ForeColor = Color.FromArgb(246, 242, 255);
@@ -142,8 +142,8 @@
             button3.AutoSize = true;
             button3.BackColor = Color.Transparent;
             button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.DimGray;
-            button3.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(131, 81, 232);
+            button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(131, 81, 232);
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button3.ForeColor = Color.FromArgb(246, 242, 255);
@@ -161,8 +161,8 @@
             button2.AutoSize = true;
             button2.BackColor = Color.Transparent;
             button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.DimGray;
-            button2.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(131, 81, 232);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(131, 81, 232);
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button2.ForeColor = Color.FromArgb(246, 242, 255);
@@ -180,8 +180,8 @@
             button1.AutoSize = true;
             button1.BackColor = Color.Transparent;
             button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.DimGray;
-            button1.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(131, 81, 232);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(131, 81, 232);
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button1.ForeColor = Color.FromArgb(246, 242, 255);

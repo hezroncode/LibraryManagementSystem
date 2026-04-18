@@ -141,6 +141,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(35, 35, 35);
+            panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(comboBox1);
             panel3.Controls.Add(listBox1);
             panel3.Controls.Add(numericUpDown1);
@@ -175,13 +176,13 @@
             // 
             listBox1.BackColor = Color.FromArgb(35, 35, 35);
             listBox1.BorderStyle = BorderStyle.FixedSingle;
-            listBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            listBox1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             listBox1.ForeColor = Color.FromArgb(246, 242, 255);
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
+            listBox1.ItemHeight = 17;
             listBox1.Location = new Point(34, 173);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(252, 62);
+            listBox1.Size = new Size(252, 53);
             listBox1.TabIndex = 22;
             listBox1.Visible = false;
             listBox1.Click += listBox1_Click;
@@ -203,7 +204,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(246, 242, 255);
-            label1.Location = new Point(30, 348);
+            label1.Location = new Point(29, 347);
             label1.Name = "label1";
             label1.Size = new Size(119, 25);
             label1.TabIndex = 22;
@@ -215,7 +216,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(246, 242, 255);
-            label5.Location = new Point(25, 115);
+            label5.Location = new Point(24, 114);
             label5.Name = "label5";
             label5.Size = new Size(75, 25);
             label5.TabIndex = 16;
@@ -227,7 +228,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(246, 242, 255);
-            label7.Location = new Point(25, 196);
+            label7.Location = new Point(24, 195);
             label7.Name = "label7";
             label7.Size = new Size(142, 25);
             label7.TabIndex = 20;
@@ -239,7 +240,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(246, 242, 255);
-            label8.Location = new Point(25, 274);
+            label8.Location = new Point(24, 273);
             label8.Name = "label8";
             label8.Size = new Size(106, 25);
             label8.TabIndex = 19;
@@ -251,7 +252,7 @@
             panel8.BackColor = Color.FromArgb(50, 50, 50);
             panel8.Controls.Add(textBox3);
             panel8.Controls.Add(panel9);
-            panel8.Location = new Point(32, 223);
+            panel8.Location = new Point(31, 222);
             panel8.Margin = new Padding(3, 2, 3, 2);
             panel8.Name = "panel8";
             panel8.Size = new Size(257, 32);
@@ -263,10 +264,10 @@
             textBox3.BorderStyle = BorderStyle.None;
             textBox3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox3.ForeColor = Color.FromArgb(246, 242, 255);
-            textBox3.Location = new Point(4, 7);
+            textBox3.Location = new Point(5, 7);
             textBox3.Margin = new Padding(3, 2, 3, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(209, 20);
+            textBox3.Size = new Size(250, 20);
             textBox3.TabIndex = 3;
             // 
             // panel9
@@ -284,7 +285,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(246, 242, 255);
-            label6.Location = new Point(25, 37);
+            label6.Location = new Point(24, 36);
             label6.Name = "label6";
             label6.Size = new Size(50, 25);
             label6.TabIndex = 15;
@@ -296,7 +297,7 @@
             panel4.BackColor = Color.FromArgb(50, 50, 50);
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(textBox4);
-            panel4.Location = new Point(32, 142);
+            panel4.Location = new Point(31, 141);
             panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
             panel4.Size = new Size(257, 32);
@@ -316,11 +317,11 @@
             textBox4.BackColor = Color.FromArgb(50, 50, 50);
             textBox4.BorderStyle = BorderStyle.None;
             textBox4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox4.ForeColor = Color.FromArgb(212, 191, 255);
-            textBox4.Location = new Point(2, 7);
+            textBox4.ForeColor = Color.FromArgb(246, 242, 255);
+            textBox4.Location = new Point(4, 7);
             textBox4.Margin = new Padding(3, 2, 3, 2);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(209, 20);
+            textBox4.Size = new Size(250, 20);
             textBox4.TabIndex = 1;
             textBox4.TextChanged += textBox4_TextChanged;
             // 
@@ -330,7 +331,7 @@
             panel6.BackColor = Color.FromArgb(50, 50, 50);
             panel6.Controls.Add(panel7);
             panel6.Controls.Add(textBox1);
-            panel6.Location = new Point(32, 64);
+            panel6.Location = new Point(31, 63);
             panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
             panel6.Size = new Size(257, 32);
@@ -352,10 +353,10 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.ForeColor = Color.FromArgb(246, 242, 255);
-            textBox1.Location = new Point(4, 7);
+            textBox1.Location = new Point(4, 6);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(246, 20);
+            textBox1.Size = new Size(251, 20);
             textBox1.TabIndex = 0;
             // 
             // label4
@@ -388,7 +389,7 @@
             dataGridViewCellStyle2.ForeColor = Color.FromArgb(246, 242, 255);
             dataGridViewCellStyle2.Padding = new Padding(5);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(131, 81, 232);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(246, 242, 255);
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -428,11 +429,11 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(246, 242, 255);
-            label3.Location = new Point(43, 38);
+            label3.Location = new Point(43, 47);
             label3.Name = "label3";
-            label3.Size = new Size(113, 45);
+            label3.Size = new Size(101, 40);
             label3.TabIndex = 9;
             label3.Text = "Books";
             // 
@@ -440,11 +441,12 @@
             // 
             textBox2.BackColor = Color.FromArgb(50, 50, 50);
             textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(0, 10);
+            textBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.ForeColor = Color.FromArgb(246, 242, 255);
+            textBox2.Location = new Point(4, 7);
             textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(213, 18);
+            textBox2.Size = new Size(210, 20);
             textBox2.TabIndex = 18;
             // 
             // button1
@@ -482,7 +484,7 @@
             panel11.Location = new Point(3, 28);
             panel11.Margin = new Padding(3, 2, 3, 2);
             panel11.Name = "panel11";
-            panel11.Size = new Size(210, 2);
+            panel11.Size = new Size(210, 1);
             panel11.TabIndex = 1;
             // 
             // ucBooks

@@ -12,4 +12,13 @@
     <PackageReference Include="MySql.Data" Version="8.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Images\eyeclose.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\eyeopen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

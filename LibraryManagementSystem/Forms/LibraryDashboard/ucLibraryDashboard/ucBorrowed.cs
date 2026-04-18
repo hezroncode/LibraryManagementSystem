@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ColegioLibrarySystem.Helpers;
+﻿using ColegioLibrarySystem.Helpers;
 using ColegioLibrarySystem.Models;
+using System.Data;
 
 namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
 {
@@ -52,6 +44,7 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
 
                 // Fill the Overview labels. 
                 // I swapped "Year Published" for "Copies to Return" since that's more useful here!
+                panel2.Visible = true;
                 label7.Text = $"Title: {title}";
                 label2.Text = $"Author: {author}";
                 label3.Text = $"Category: {category}";
@@ -75,9 +68,9 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             {
                 MessageBox.Show(message, "Return Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // REFRESH: This makes the math recalculate to 0, causing the row to vanish!
                 LoadMyShelf();
                 ClearOverview();
+                panel2.Visible = false;
             }
             else
             {
@@ -91,6 +84,12 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             label2.Text = "Author:";
             label3.Text = "Category:";
             label4.Text = "Copies to Return:";
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            ClearOverview();
+            panel2.Visible = false;
         }
     }
 }

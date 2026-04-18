@@ -1,12 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
-using System.Net.Http.Headers;
 
 namespace ColegioLibrarySystem.Helpers
 {
     public class DatabaseHelper
     {
-        // e adjust lang ang port if dili 3306 ang gamit sa inyong xampp
+        // The connector for the database
         private string connectionString = "Server=localhost;Database=librarymanagementdb;Uid=root;Pwd=;Convert Zero Datetime=True;";
 
         public MySqlConnection GetConnection()
@@ -14,7 +13,7 @@ namespace ColegioLibrarySystem.Helpers
             return new MySqlConnection(connectionString);
         }
 
-        // mga SELECT na queries
+        // For the SELECT queries
         public DataTable ExecuteQuery(string query, MySqlParameter[] parameters = null)
         {
             DataTable dt = new DataTable();
@@ -41,7 +40,7 @@ namespace ColegioLibrarySystem.Helpers
             }
             return dt;
         }
-        // mga INSERT, UPDATE, DELETE na queries
+        // For the INSERT, DELETE, and UPDATE queries
         public int ExecuteNonQuery(string query, MySqlParameter[] parameters = null)
         {
             int rowsAffected = 0;
@@ -65,6 +64,25 @@ namespace ColegioLibrarySystem.Helpers
             }
             return rowsAffected;
         }
+
+        /* 
+          Below are the reusable dbhelper code extension for most of the database queries:
+            # Return/Retrieving (Books, Categories, Authors, Users, Transactions, Books borrowed(user), TransactionHistory(user))
+            # Borrowing and Returning books
+            # Delete and Update functions for the Admin dashboard
+          
+          All you have to do is to create an instance of this class and access the needed method
+           Step 1. Create a private field on each dashboard { private DatabaseHelper dbhelper; }
+           Step 2. Create a new instance of the class in the constructor { private DatabaseHelper dbhelper; }
+           Step 3. You can now access the methods in your dashboard form like { dbhelper.GetBooks(searchquery, categoryID, authorID) }
+                   don't forget the required parameters to be sent via argument
+            
+           This might still contain some bugs
+
+           Contact me nalang if naa
+        */
+
+        // Returns the books from the database
         public DataTable GetBooks(string searchquery = "", int categoryId = 0, int authorID = 0)
         {
             string query = @"SELECT b.book_id AS 'Book ID', b.title AS Title, a.author_name AS Author, c.category_name AS Category, b.yearpublished AS 'Year Published', b.total_copies AS 'Total Copies', b.available_copies AS 'Available Copies'
@@ -92,10 +110,11 @@ namespace ColegioLibrarySystem.Helpers
             return ExecuteQuery(query, parameters);
 
         }
+        // Returns the categories from the database
         public DataTable GetCategories(string searchquery = "")
         {
             string query = @"SELECT category_id AS 'Category ID', category_name AS 'Category' FROM Category
-                           WHERE (@search IS NULL OR 'Category' LIKE @search)
+                           WHERE (@search IS NULL OR category_name LIKE @search)
                            ORDER BY category_id ASC";
             MySqlParameter[] parameters = {
                 new MySqlParameter("@search", string.IsNullOrEmpty(searchquery) ? (object)DBNull.Value : "%" + searchquery + "%")
@@ -116,6 +135,7 @@ namespace ColegioLibrarySystem.Helpers
             };
             return ExecuteQuery(query, parameters);
         }
+        // Returns the transactions from the database 
         public DataTable GetTransactions(string searchquery = "", int userID = 0, int bookID = 0)
         {
             string query = @"SELECT t.transaction_id AS 'ID', 
@@ -138,7 +158,9 @@ namespace ColegioLibrarySystem.Helpers
             return ExecuteQuery(query, parameters);
         }
 
-        public int GetActiveBorrowCount(int userId)
+        // This is not used. Remove the /* */ if you plan on using this
+
+        /*public int GetActiveBorrowCount(int userId)
         {
                 string query = "SELECT COUNT(*) FROM transaction WHERE user_id = @userId AND status = 'Borrow'";
                 MySqlParameter[] parameters = {
@@ -167,7 +189,8 @@ namespace ColegioLibrarySystem.Helpers
                     conn.Open();
                     return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
                 }
-        }
+        }*/
+        // Returns the books a user has borrowed
         public DataTable GetCurrentBorrowedBooks(int userId)
         {
             string query = @"SELECT 
@@ -192,6 +215,7 @@ namespace ColegioLibrarySystem.Helpers
             MySqlParameter[] parameters = { new MySqlParameter("@userId", userId) };
             return ExecuteQuery(query, parameters);
         }
+        //Returns the transaction hisstory of a user
         public DataTable GetTransactionHistory(int userId)
         {
             string query = @"SELECT 
@@ -208,7 +232,7 @@ namespace ColegioLibrarySystem.Helpers
             MySqlParameter[] parameters = { new MySqlParameter("@userId", userId) };
             return ExecuteQuery(query, parameters);
         }
-
+        // For borrowing books
         public (bool success, string message) BorrowBook(int userId, string userRole, int bookId, int qty)
         {
             using (MySqlConnection conn = GetConnection())
@@ -217,10 +241,8 @@ namespace ColegioLibrarySystem.Helpers
                 MySqlTransaction sqlTrans = conn.BeginTransaction();
                 try
                 {
-                    // 1. STUDENT RULE: Check if they already have this book
                     if (userRole == "Student")
                     {
-                        // Force quantity to 1 for students just in case the UI sends a higher number
                         qty = 1;
 
                         string checkStudent = @"SELECT SUM(CASE WHEN status = 'Borrow' THEN quantity ELSE -quantity END) 
@@ -235,8 +257,7 @@ namespace ColegioLibrarySystem.Helpers
                             return (false, "Students can only borrow 1 copy per book. You already have this one!");
                         }
                     }
-
-                    // 2. Check Library Stock
+                    // Check Library Stock
                     string checkStock = "SELECT available_copies FROM book WHERE book_id = @bid";
                     MySqlCommand checkStockCmd = new MySqlCommand(checkStock, conn, sqlTrans);
                     checkStockCmd.Parameters.AddWithValue("@bid", bookId);
@@ -244,7 +265,7 @@ namespace ColegioLibrarySystem.Helpers
 
                     if (available < qty) return (false, "Not enough copies available in the library.");
 
-                    // 3. INSERT the Borrow Transaction (Creates a NEW row)
+                    // INSERT the Borrow Transaction
                     string insertBorrow = @"INSERT INTO `transaction` (user_id, book_id, quantity, borrow_date, status) 
                                     VALUES (@uid, @bid, @qty, NOW(), 'Borrow')";
                     MySqlCommand insertCmd = new MySqlCommand(insertBorrow, conn, sqlTrans);
@@ -271,7 +292,7 @@ namespace ColegioLibrarySystem.Helpers
             }
         }
 
-        // Notice we only need the userId and bookId now
+        // For returning books
         public (bool success, string message) ReturnBook(int userId, int bookId)
         {
             using (MySqlConnection conn = GetConnection())
@@ -280,7 +301,7 @@ namespace ColegioLibrarySystem.Helpers
                 MySqlTransaction sqlTrans = conn.BeginTransaction();
                 try
                 {
-                    // 1. Calculate the exact number of copies they CURRENTLY hold (The Balance)
+                    // Calculate the exact number of copies they CURRENTLY hold (The Balance)
                     string balanceQuery = @"SELECT SUM(CASE 
                                         WHEN LOWER(status) = 'borrow' THEN quantity 
                                         WHEN LOWER(status) = 'returned' THEN -quantity 
@@ -301,7 +322,7 @@ namespace ColegioLibrarySystem.Helpers
                         return (false, "You don't have any copies of this book to return.");
                     }
 
-                    // 2. INSERT the Return Transaction for ALL copies
+                    // INSERT the Return Transaction for ALL copies
                     string insertReturn = @"INSERT INTO `transaction` (user_id, book_id, quantity, return_date, status) 
                                     VALUES (@uid, @bid, @qty, NOW(), 'Returned')";
                     MySqlCommand insertCmd = new MySqlCommand(insertReturn, conn, sqlTrans);
@@ -310,7 +331,7 @@ namespace ColegioLibrarySystem.Helpers
                     insertCmd.Parameters.AddWithValue("@qty", outstandingBalance); // Returns EVERYTHING they hold
                     insertCmd.ExecuteNonQuery();
 
-                    // 3. Restore ALL copies back to the Library Stock
+                    // Restore ALL copies back to the Library Stock
                     string addStock = "UPDATE book SET available_copies = available_copies + @qty WHERE book_id = @bid";
                     MySqlCommand addCmd = new MySqlCommand(addStock, conn, sqlTrans);
                     addCmd.Parameters.AddWithValue("@qty", outstandingBalance);
@@ -327,22 +348,9 @@ namespace ColegioLibrarySystem.Helpers
                 }
             }
         }
-        public DataTable GetBorrowedBooksByUser(int userId)
-        {
-            string query = @"SELECT t.transaction_id AS 'TransactionID',
-                     b.book_id AS 'BookID',
-                     b.title AS 'Title',
-                     a.author_name AS 'Author',
-                     t.borrow_date AS 'Borrow Date'
-                     FROM transaction t
-                     JOIN book b ON t.book_id = b.book_id
-                     JOIN author a ON b.author_id = a.author_id
-                     WHERE t.user_id = @userId AND t.status = 'Borrow'";
-            MySqlParameter[] parameters = {
-        new MySqlParameter("@userId", userId)
-    };
-            return ExecuteQuery(query, parameters);
-        }
+
+        // All the DELETE queries for the database
+
         public bool DeleteBooks(int bookid)
         {
             string query = "DELETE FROM `book` WHERE book_id = @id";
@@ -368,6 +376,9 @@ namespace ColegioLibrarySystem.Helpers
             MySqlParameter[] parameters = { new MySqlParameter("@id", userid) };
             return ExecuteNonQuery(query, parameters) > 0;
         }
+
+        // All the update queries for the database
+
         public bool UpdateBook(int bookId, string title, int authorId, int categoryId, int year, int totalCopies)
         {
             string query = @"UPDATE `book` 
@@ -427,7 +438,7 @@ namespace ColegioLibrarySystem.Helpers
             new MySqlParameter("catid", catid)
             };
             return ExecuteNonQuery(query, parameters) > 0;
-                           
+
         }
     }
 }

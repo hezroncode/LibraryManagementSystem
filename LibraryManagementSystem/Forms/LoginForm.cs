@@ -5,12 +5,14 @@ using LibraryManagementSystem.Forms.AdminDashboard;
 using LibraryManagementSystem.Forms.UserDashboard;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.IO;
 
 namespace LibraryManagementSystem
 {
     public partial class LoginForm : Form
     {
         private DatabaseHelper dbHelper;
+        private bool passwordVisible = false;
         public LoginForm()
         {
             dbHelper = new DatabaseHelper();
@@ -43,7 +45,7 @@ namespace LibraryManagementSystem
                 Session.Role = dt.Rows[0]["role"].ToString();
                 Session.FullName = dt.Rows[0]["fullName"].ToString();
 
-                MessageBox.Show($"Welcome {Session.FullName}! Role: {Session.Role}");
+                MessageBox.Show($"Welcome {Session.FullName}!");
 
                 if (Session.Role == "Admin")
                 {
@@ -57,7 +59,7 @@ namespace LibraryManagementSystem
                 }
                 this.Hide();
             }
-            else 
+            else
             {
                 MessageBox.Show("Invalid username or password. Please try again.");
                 textBox1.Clear();
@@ -82,6 +84,20 @@ namespace LibraryManagementSystem
                 }
             }
 
+        }
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            passwordVisible = !passwordVisible;
+            if (passwordVisible)
+            {
+                textBox2.PasswordChar = '\0';
+                pictureBox2.Image = Image.FromFile("Images/eyeopen.png");
+            }
+            else
+            {
+                textBox2.PasswordChar = '●';
+                pictureBox2.Image = Image.FromFile("Images/eyeclose.png");
+            }
         }
 
         //protected override void OnFormClosed(FormClosedEventArgs e) { Application.Exit(); }

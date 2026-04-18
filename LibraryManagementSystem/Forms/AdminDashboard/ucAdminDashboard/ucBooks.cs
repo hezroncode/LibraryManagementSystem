@@ -1,5 +1,6 @@
 ﻿using ColegioLibrarySystem.Helpers;
 using MySql.Data.MySqlClient;
+using System.ComponentModel;
 using System.Data;
 
 namespace LibraryManagementSystem.Forms.AdminDashboard
@@ -120,6 +121,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            listBox1.Visible = false;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];

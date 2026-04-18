@@ -28,22 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminSignUpForm));
             panel1 = new Panel();
             linkLabel1 = new LinkLabel();
             button1 = new Button();
             panel8 = new Panel();
-            pictureBox3 = new PictureBox();
             panel9 = new Panel();
             textBox3 = new TextBox();
             label4 = new Label();
             panel6 = new Panel();
-            pictureBox2 = new PictureBox();
             panel7 = new Panel();
             textBox2 = new TextBox();
             label3 = new Label();
             panel4 = new Panel();
-            pictureBox1 = new PictureBox();
             panel5 = new Panel();
             textBox1 = new TextBox();
             label2 = new Label();
@@ -52,17 +48,14 @@
             panel3 = new Panel();
             panel1.SuspendLayout();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.AutoSize = true;
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.FromArgb(30, 30, 30);
             panel1.Controls.Add(linkLabel1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(panel8);
@@ -75,9 +68,9 @@
             panel1.Dock = DockStyle.Fill;
             panel1.ForeColor = SystemColors.ActiveBorder;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(10, 10, 10, 3);
+            panel1.Margin = new Padding(9, 8, 9, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(730, 565);
+            panel1.Size = new Size(639, 456);
             panel1.TabIndex = 0;
             // 
             // linkLabel1
@@ -85,10 +78,10 @@
             linkLabel1.AutoSize = true;
             linkLabel1.BackColor = Color.Transparent;
             linkLabel1.ForeColor = Color.Indigo;
-            linkLabel1.LinkColor = Color.Indigo;
-            linkLabel1.Location = new Point(338, 538);
+            linkLabel1.LinkColor = Color.FromArgb(131, 81, 232);
+            linkLabel1.Location = new Point(301, 432);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(50, 20);
+            linkLabel1.Size = new Size(40, 15);
             linkLabel1.TabIndex = 8;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Log in";
@@ -96,13 +89,16 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.DarkViolet;
+            button1.BackColor = Color.FromArgb(131, 81, 232);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(208, 453);
+            button1.Location = new Point(182, 337);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(313, 56);
+            button1.Size = new Size(274, 45);
             button1.TabIndex = 7;
             button1.Text = "Create";
             button1.UseVisualStyleBackColor = false;
@@ -112,40 +108,33 @@
             // 
             panel8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel8.BackColor = Color.Transparent;
-            panel8.Controls.Add(pictureBox3);
             panel8.Controls.Add(panel9);
             panel8.Controls.Add(textBox3);
-            panel8.Location = new Point(210, 364);
+            panel8.Location = new Point(184, 273);
+            panel8.Margin = new Padding(3, 2, 3, 2);
             panel8.Name = "panel8";
-            panel8.Size = new Size(311, 41);
+            panel8.Size = new Size(272, 35);
             panel8.TabIndex = 6;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(277, 5);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(36, 33);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 10;
-            pictureBox3.TabStop = false;
             // 
             // panel9
             // 
-            panel9.BackColor = Color.MediumPurple;
-            panel9.Location = new Point(2, 39);
+            panel9.BackColor = Color.FromArgb(131, 81, 232);
+            panel9.Location = new Point(2, 31);
+            panel9.Margin = new Padding(3, 2, 3, 2);
             panel9.Name = "panel9";
-            panel9.Size = new Size(311, 2);
+            panel9.Size = new Size(272, 1);
             panel9.TabIndex = 3;
             // 
             // textBox3
             // 
+            textBox3.BackColor = Color.FromArgb(30, 30, 30);
             textBox3.BorderStyle = BorderStyle.None;
             textBox3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox3.ForeColor = Color.DarkViolet;
-            textBox3.Location = new Point(3, 13);
+            textBox3.Location = new Point(3, 7);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(308, 23);
+            textBox3.Size = new Size(267, 19);
             textBox3.TabIndex = 0;
             textBox3.UseSystemPasswordChar = true;
             // 
@@ -155,10 +144,10 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.MediumPurple;
-            label4.Location = new Point(205, 333);
+            label4.ForeColor = Color.FromArgb(246, 242, 255);
+            label4.Location = new Point(179, 250);
             label4.Name = "label4";
-            label4.Size = new Size(97, 28);
+            label4.Size = new Size(79, 21);
             label4.TabIndex = 5;
             label4.Text = "Password";
             // 
@@ -166,40 +155,33 @@
             // 
             panel6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel6.BackColor = Color.Transparent;
-            panel6.Controls.Add(pictureBox2);
             panel6.Controls.Add(panel7);
             panel6.Controls.Add(textBox2);
-            panel6.Location = new Point(208, 259);
+            panel6.Location = new Point(182, 194);
+            panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(311, 41);
+            panel6.Size = new Size(272, 33);
             panel6.TabIndex = 4;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(279, 5);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(36, 33);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 9;
-            pictureBox2.TabStop = false;
             // 
             // panel7
             // 
-            panel7.BackColor = Color.MediumPurple;
-            panel7.Location = new Point(2, 39);
+            panel7.BackColor = Color.FromArgb(131, 81, 232);
+            panel7.Location = new Point(2, 29);
+            panel7.Margin = new Padding(3, 2, 3, 2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(311, 2);
+            panel7.Size = new Size(272, 1);
             panel7.TabIndex = 3;
             // 
             // textBox2
             // 
+            textBox2.BackColor = Color.FromArgb(30, 30, 30);
             textBox2.BorderStyle = BorderStyle.None;
             textBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox2.ForeColor = Color.DarkViolet;
-            textBox2.Location = new Point(3, 13);
+            textBox2.Location = new Point(3, 7);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(308, 23);
+            textBox2.Size = new Size(268, 19);
             textBox2.TabIndex = 0;
             // 
             // label3
@@ -208,10 +190,10 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.MediumPurple;
-            label3.Location = new Point(203, 228);
+            label3.ForeColor = Color.FromArgb(246, 242, 255);
+            label3.Location = new Point(178, 171);
             label3.Name = "label3";
-            label3.Size = new Size(104, 28);
+            label3.Size = new Size(83, 21);
             label3.TabIndex = 3;
             label3.Text = "Username";
             // 
@@ -219,40 +201,33 @@
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel4.BackColor = Color.Transparent;
-            panel4.Controls.Add(pictureBox1);
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(textBox1);
-            panel4.Location = new Point(208, 156);
+            panel4.Location = new Point(182, 117);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(311, 41);
+            panel4.Size = new Size(272, 35);
             panel4.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(276, 5);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(40, 33);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
             // 
             // panel5
             // 
-            panel5.BackColor = Color.MediumPurple;
-            panel5.Location = new Point(2, 39);
+            panel5.BackColor = Color.FromArgb(131, 81, 232);
+            panel5.Location = new Point(2, 31);
+            panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(311, 2);
+            panel5.Size = new Size(272, 1);
             panel5.TabIndex = 3;
             // 
             // textBox1
             // 
+            textBox1.BackColor = Color.FromArgb(30, 30, 30);
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.ForeColor = Color.DarkViolet;
-            textBox1.Location = new Point(3, 13);
+            textBox1.Location = new Point(3, 7);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(308, 23);
+            textBox1.Size = new Size(266, 19);
             textBox1.TabIndex = 0;
             // 
             // label2
@@ -261,10 +236,10 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.MediumPurple;
-            label2.Location = new Point(203, 125);
+            label2.ForeColor = Color.FromArgb(246, 242, 255);
+            label2.Location = new Point(178, 94);
             label2.Name = "label2";
-            label2.Size = new Size(95, 28);
+            label2.Size = new Size(75, 21);
             label2.TabIndex = 1;
             label2.Text = "Fullname";
             // 
@@ -274,38 +249,44 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.MediumPurple;
-            label1.Location = new Point(199, 38);
+            label1.ForeColor = Color.FromArgb(246, 242, 255);
+            label1.Location = new Point(174, 28);
             label1.Name = "label1";
-            label1.Size = new Size(334, 41);
+            label1.Size = new Size(272, 32);
             label1.TabIndex = 0;
             label1.Text = "Create Admin Account";
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(131, 81, 232);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(567, 0);
+            panel2.Location = new Point(496, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(163, 565);
+            panel2.Size = new Size(143, 456);
             panel2.TabIndex = 1;
             // 
             // panel3
             // 
+            panel3.BackColor = Color.FromArgb(131, 81, 232);
             panel3.Dock = DockStyle.Left;
             panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(163, 565);
+            panel3.Size = new Size(143, 456);
             panel3.TabIndex = 2;
             // 
             // AdminSignUpForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AcceptButton = button1;
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
-            ClientSize = new Size(730, 565);
+            ClientSize = new Size(639, 456);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AdminSignUpForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminSignUpForm";
@@ -313,13 +294,10 @@
             panel1.PerformLayout();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -344,8 +322,5 @@
         private TextBox textBox1;
         private Button button1;
         private LinkLabel linkLabel1;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
     }
 }

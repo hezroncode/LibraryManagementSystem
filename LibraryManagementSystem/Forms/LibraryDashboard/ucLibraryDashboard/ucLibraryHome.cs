@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using ColegioLibrarySystem.Helpers;
+﻿using ColegioLibrarySystem.Helpers;
 using ColegioLibrarySystem.Models;
+using System.Data;
 
 namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
 {
@@ -27,7 +18,8 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             if (Session.Role == "Student")
             {
                 numericUpDown1.Value = 1;
-                numericUpDown1.Enabled = false; // Grays it out
+                numericUpDown1.Enabled = false;
+                label10.Visible = true;
             }
 
         }
@@ -36,18 +28,20 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             DataTable dtBooks = dbhelper.GetBooks(searchquery, categoryId, authorID);
             dataGridView1.DataSource = dtBooks;
 
-            // UX FIX: Hide the BookID column so the grid looks cleaner to the user
-            if (dataGridView1.Columns["BookID"] != null)
+            if (dataGridView1.Columns["Book ID"] != null)
             {
-                dataGridView1.Columns["BookID"].Visible = false;
+                dataGridView1.Columns["Book ID"].Visible = false;
             }
         }
         private void LoadCategory()
         {
             DataTable dtCategory = dbhelper.GetCategories();
-            comboBox1.DataSource = dtCategory;
+            DataRow row = dtCategory.NewRow(); row["Category ID"] = 0; row["Category"] = "-- All --";
+            dtCategory.Rows.InsertAt(row, 0);
+
             comboBox1.DisplayMember = "Category";
             comboBox1.ValueMember = "Category ID";
+            comboBox1.DataSource = dtCategory;
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -81,6 +75,7 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             label2.Text = "Author:";
             label3.Text = "Category:";
             label4.Text = "Year Published:";
+            label11.Visible = false;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -93,16 +88,42 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
                 string author = row.Cells["Author"].Value.ToString();
                 string category = row.Cells["Category"].Value.ToString();
                 int yearpublished = Convert.ToInt32(row.Cells["Year Published"].Value);
-                int totalcopies = Convert.ToInt32(row.Cells["Total Copies"].Value);
+                int availablecopies = Convert.ToInt32(row.Cells["Available Copies"].Value);
 
 
                 label1.Text = $"Title: {title}";
                 label2.Text = $"Author: {author}";
                 label3.Text = $"Category: {category}";
                 label4.Text = $"Year Published: {yearpublished}";
+                label11.Text = $"Available copies: {availablecopies}";
+                label11.Visible = true;
 
             }
 
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedCatID = Convert.ToInt32(comboBox1.SelectedValue);
+            string search = textBox1.Text.Trim();
+            LoadBooks(search, selectedCatID);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string search = textBox1.Text.Trim();
+            LoadBooks(search);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string search = textBox1.Text.Trim();
+            LoadBooks(search);
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            ClearOverview();
         }
     }
 }
