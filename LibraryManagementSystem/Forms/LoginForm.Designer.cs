@@ -77,7 +77,7 @@
             label4.ForeColor = Color.FromArgb(246, 242, 255);
             label4.Location = new Point(79, 271);
             label4.Name = "label4";
-            label4.Size = new Size(73, 20);
+            label4.Size = new Size(91, 25);
             label4.TabIndex = 12;
             label4.Text = "Password";
             // 
@@ -89,7 +89,7 @@
             label3.ForeColor = Color.FromArgb(246, 242, 255);
             label3.Location = new Point(79, 193);
             label3.Name = "label3";
-            label3.Size = new Size(78, 20);
+            label3.Size = new Size(98, 25);
             label3.TabIndex = 11;
             label3.Text = "Username";
             // 
@@ -123,10 +123,10 @@
             textBox2.Cursor = Cursors.IBeam;
             textBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox2.ForeColor = Color.FromArgb(246, 242, 255);
-            textBox2.Location = new Point(4, 14);
+            textBox2.Location = new Point(4, 12);
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '●';
-            textBox2.Size = new Size(239, 20);
+            textBox2.Size = new Size(239, 24);
             textBox2.TabIndex = 3;
             // 
             // panel5
@@ -165,7 +165,7 @@
             textBox1.ForeColor = Color.FromArgb(246, 242, 255);
             textBox1.Location = new Point(4, 14);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(239, 20);
+            textBox1.Size = new Size(239, 24);
             textBox1.TabIndex = 0;
             // 
             // label2
@@ -177,7 +177,7 @@
             label2.ForeColor = Color.FromArgb(246, 242, 255);
             label2.Location = new Point(159, 123);
             label2.Name = "label2";
-            label2.Size = new Size(89, 37);
+            label2.Size = new Size(110, 46);
             label2.TabIndex = 6;
             label2.Text = "Login";
             // 
@@ -205,9 +205,9 @@
             linkLabel1.Anchor = AnchorStyles.Bottom;
             linkLabel1.AutoSize = true;
             linkLabel1.LinkColor = Color.White;
-            linkLabel1.Location = new Point(148, 461);
+            linkLabel1.Location = new Point(149, 456);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(128, 15);
+            linkLabel1.Size = new Size(158, 20);
             linkLabel1.TabIndex = 2;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Create Admin Account";
@@ -219,9 +219,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(61, 84);
+            label1.Location = new Point(28, 84);
             label1.Name = "label1";
-            label1.Size = new Size(320, 31);
+            label1.Size = new Size(413, 40);
             label1.TabIndex = 3;
             label1.Text = "Library Management System";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -253,7 +253,7 @@
             // LoginForm
             // 
             AcceptButton = cnfrmbtn1;
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
             ClientSize = new Size(856, 497);

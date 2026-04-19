@@ -72,6 +72,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             {
                 Application.Restart();
                 Environment.Exit(0);
+                Session.Clear();
             }
         }
 

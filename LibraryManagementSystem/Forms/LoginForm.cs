@@ -5,7 +5,6 @@ using LibraryManagementSystem.Forms.AdminDashboard;
 using LibraryManagementSystem.Forms.UserDashboard;
 using MySql.Data.MySqlClient;
 using System.Data;
-using System.IO;
 
 namespace LibraryManagementSystem
 {
@@ -75,7 +74,7 @@ namespace LibraryManagementSystem
                 {
                     AdminSignUpForm signUpForm = new AdminSignUpForm();
                     signUpForm.Show();
-                    this.Hide();
+                    this.Close();
 
                     signUpForm.FormClosed += (s, args) =>
                     {

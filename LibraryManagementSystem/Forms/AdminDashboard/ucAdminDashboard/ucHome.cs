@@ -20,7 +20,6 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             InitializeComponent();
             dbhelper = new DatabaseHelper();
             LoadDashboardData();
-            //StyleDataGridView(dataGridView1);
         }
         private void LoadAuthors(string searchqueary = "")
         {

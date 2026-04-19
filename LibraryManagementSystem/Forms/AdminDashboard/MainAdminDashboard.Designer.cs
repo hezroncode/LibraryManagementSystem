@@ -47,10 +47,9 @@
             // 
             pnlContainer.BackColor = Color.FromArgb(30, 30, 30);
             pnlContainer.Dock = DockStyle.Fill;
-            pnlContainer.Location = new Point(0, 85);
-            pnlContainer.Margin = new Padding(3, 2, 3, 2);
+            pnlContainer.Location = new Point(0, 113);
             pnlContainer.Name = "pnlContainer";
-            pnlContainer.Size = new Size(1212, 630);
+            pnlContainer.Size = new Size(1385, 840);
             pnlContainer.TabIndex = 1;
             pnlContainer.Paint += pnlContainer_Paint;
             // 
@@ -66,8 +65,9 @@
             panel2.Controls.Add(button1);
             panel2.Controls.Add(label1);
             panel2.Location = new Point(-1, -1);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1213, 86);
+            panel2.Size = new Size(1386, 115);
             panel2.TabIndex = 1;
             // 
             // linkLabel1
@@ -78,9 +78,9 @@
             linkLabel1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             linkLabel1.ForeColor = Color.FromArgb(212, 191, 255);
             linkLabel1.LinkColor = Color.FromArgb(246, 242, 255);
-            linkLabel1.Location = new Point(1154, 64);
+            linkLabel1.Location = new Point(1319, 85);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(56, 20);
+            linkLabel1.Size = new Size(69, 25);
             linkLabel1.TabIndex = 2;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Logout";
@@ -92,9 +92,9 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(246, 242, 255);
-            label2.Location = new Point(322, 35);
+            label2.Location = new Point(397, 51);
             label2.Name = "label2";
-            label2.Size = new Size(124, 21);
+            label2.Size = new Size(156, 28);
             label2.TabIndex = 1;
             label2.Text = "Welcome Admin";
             // 
@@ -108,10 +108,11 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button5.ForeColor = Color.FromArgb(246, 242, 255);
-            button5.Location = new Point(595, 25);
+            button5.Location = new Point(680, 33);
+            button5.Margin = new Padding(3, 4, 3, 4);
             button5.Name = "button5";
-            button5.Padding = new Padding(4, 3, 4, 4);
-            button5.Size = new Size(101, 47);
+            button5.Padding = new Padding(5, 4, 5, 5);
+            button5.Size = new Size(115, 63);
             button5.TabIndex = 6;
             button5.Text = "Home";
             button5.UseVisualStyleBackColor = false;
@@ -127,11 +128,10 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button4.ForeColor = Color.FromArgb(246, 242, 255);
-            button4.Location = new Point(1033, 25);
-            button4.Margin = new Padding(3, 2, 3, 2);
+            button4.Location = new Point(1181, 33);
             button4.Name = "button4";
-            button4.Padding = new Padding(4, 2, 4, 4);
-            button4.Size = new Size(101, 47);
+            button4.Padding = new Padding(5, 3, 5, 5);
+            button4.Size = new Size(115, 63);
             button4.TabIndex = 5;
             button4.Text = "User";
             button4.UseVisualStyleBackColor = false;
@@ -147,10 +147,11 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button3.ForeColor = Color.FromArgb(246, 242, 255);
-            button3.Location = new Point(913, 25);
+            button3.Location = new Point(1043, 33);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Padding = new Padding(4, 3, 4, 4);
-            button3.Size = new Size(134, 47);
+            button3.Padding = new Padding(5, 4, 5, 5);
+            button3.Size = new Size(153, 63);
             button3.TabIndex = 4;
             button3.Text = "Categories";
             button3.UseVisualStyleBackColor = false;
@@ -166,10 +167,11 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button2.ForeColor = Color.FromArgb(246, 242, 255);
-            button2.Location = new Point(807, 25);
+            button2.Location = new Point(922, 33);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Padding = new Padding(4, 3, 4, 4);
-            button2.Size = new Size(110, 47);
+            button2.Padding = new Padding(5, 4, 5, 5);
+            button2.Size = new Size(126, 63);
             button2.TabIndex = 3;
             button2.Text = "Authors";
             button2.UseVisualStyleBackColor = false;
@@ -185,10 +187,11 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button1.ForeColor = Color.FromArgb(246, 242, 255);
-            button1.Location = new Point(701, 25);
+            button1.Location = new Point(801, 33);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Padding = new Padding(4, 3, 4, 4);
-            button1.Size = new Size(101, 47);
+            button1.Padding = new Padding(5, 4, 5, 5);
+            button1.Size = new Size(115, 63);
             button1.TabIndex = 2;
             button1.Text = "Books";
             button1.UseVisualStyleBackColor = false;
@@ -200,10 +203,10 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(246, 242, 255);
-            label1.Location = new Point(23, 19);
+            label1.Location = new Point(26, 25);
             label1.Name = "label1";
             label1.RightToLeft = RightToLeft.No;
-            label1.Size = new Size(293, 45);
+            label1.Size = new Size(365, 54);
             label1.TabIndex = 0;
             label1.Text = "Admin Dashboard";
             // 
@@ -213,18 +216,20 @@
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1212, 85);
+            panel1.Size = new Size(1385, 113);
             panel1.TabIndex = 0;
             // 
             // MainAdminDashboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1212, 715);
+            ClientSize = new Size(1385, 953);
             Controls.Add(pnlContainer);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MainAdminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BookManagementForm";
