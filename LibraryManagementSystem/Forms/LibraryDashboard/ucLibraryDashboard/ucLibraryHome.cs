@@ -114,36 +114,15 @@ namespace LibraryManagementSystem.Forms.LibraryDashboard.ucLibraryDashboard
             string search = textBox1.Text.Trim();
             LoadBooks(search);
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            string search = textBox1.Text.Trim();
-            LoadBooks(search);
-        }
-
         private void panel1_Click(object sender, EventArgs e)
         {
             ClearOverview();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void textBox2_TextChanged_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
+            string search = textBox2.Text.Trim();
+            LoadBooks(search);
         }
     }
 }

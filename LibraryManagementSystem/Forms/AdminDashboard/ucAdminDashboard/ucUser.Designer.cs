@@ -56,12 +56,16 @@
             textBox3 = new TextBox();
             panel1 = new Panel();
             panel2 = new Panel();
+            panel8 = new Panel();
+            panel9 = new Panel();
             panel3.SuspendLayout();
             panel10.SuspendLayout();
             panel4.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
+            panel8.SuspendLayout();
+            panel9.SuspendLayout();
             SuspendLayout();
             // 
             // button8
@@ -72,7 +76,7 @@
             button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button8.ForeColor = Color.FromArgb(246, 242, 255);
-            button8.Location = new Point(1072, 554);
+            button8.Location = new Point(1080, 553);
             button8.Name = "button8";
             button8.Padding = new Padding(4, 3, 4, 4);
             button8.Size = new Size(101, 38);
@@ -84,12 +88,12 @@
             // button7
             // 
             button7.AutoSize = true;
-            button7.BackColor = Color.FromArgb(20, 38, 38);
+            button7.BackColor = Color.FromArgb(66, 84, 138);
             button7.FlatAppearance.BorderSize = 0;
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button7.ForeColor = Color.White;
-            button7.Location = new Point(278, 501);
+            button7.Location = new Point(283, 499);
             button7.Name = "button7";
             button7.Padding = new Padding(4, 3, 4, 4);
             button7.Size = new Size(101, 38);
@@ -101,12 +105,12 @@
             // button6
             // 
             button6.AutoSize = true;
-            button6.BackColor = Color.FromArgb(88, 22, 22);
+            button6.BackColor = Color.FromArgb(133, 50, 50);
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button6.ForeColor = Color.White;
-            button6.Location = new Point(160, 501);
+            button6.Location = new Point(165, 499);
             button6.Name = "button6";
             button6.Padding = new Padding(4, 3, 4, 4);
             button6.Size = new Size(101, 38);
@@ -118,12 +122,12 @@
             // button5
             // 
             button5.AutoSize = true;
-            button5.BackColor = Color.FromArgb(48, 95, 54);
+            button5.BackColor = Color.FromArgb(61, 133, 98);
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(43, 501);
+            button5.Location = new Point(48, 499);
             button5.Name = "button5";
             button5.Padding = new Padding(4, 3, 4, 4);
             button5.Size = new Size(101, 38);
@@ -147,7 +151,7 @@
             panel3.Location = new Point(43, 89);
             panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(371, 389);
+            panel3.Size = new Size(344, 389);
             panel3.TabIndex = 18;
             // 
             // comboBox1
@@ -158,7 +162,7 @@
             comboBox1.ForeColor = Color.FromArgb(246, 242, 255);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Student", "Instructor", "Admin" });
-            comboBox1.Location = new Point(31, 316);
+            comboBox1.Location = new Point(45, 317);
             comboBox1.Margin = new Padding(3, 2, 3, 2);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(107, 25);
@@ -170,7 +174,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(246, 242, 255);
-            label7.Location = new Point(24, 289);
+            label7.Location = new Point(25, 290);
             label7.Name = "label7";
             label7.Size = new Size(51, 25);
             label7.TabIndex = 20;
@@ -182,7 +186,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(246, 242, 255);
-            label8.Location = new Point(24, 208);
+            label8.Location = new Point(25, 209);
             label8.Name = "label8";
             label8.Size = new Size(97, 25);
             label8.TabIndex = 19;
@@ -194,7 +198,7 @@
             panel10.BackColor = Color.FromArgb(50, 50, 50);
             panel10.Controls.Add(panel11);
             panel10.Controls.Add(textBox4);
-            panel10.Location = new Point(31, 235);
+            panel10.Location = new Point(32, 236);
             panel10.Margin = new Padding(3, 2, 3, 2);
             panel10.Name = "panel10";
             panel10.Size = new Size(257, 32);
@@ -227,7 +231,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(246, 242, 255);
-            label5.Location = new Point(24, 126);
+            label5.Location = new Point(25, 127);
             label5.Name = "label5";
             label5.Size = new Size(101, 25);
             label5.TabIndex = 16;
@@ -239,7 +243,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(246, 242, 255);
-            label6.Location = new Point(24, 43);
+            label6.Location = new Point(25, 44);
             label6.Name = "label6";
             label6.Size = new Size(93, 25);
             label6.TabIndex = 15;
@@ -251,7 +255,7 @@
             panel4.BackColor = Color.FromArgb(50, 50, 50);
             panel4.Controls.Add(textBox2);
             panel4.Controls.Add(panel5);
-            panel4.Location = new Point(31, 153);
+            panel4.Location = new Point(32, 154);
             panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
             panel4.Size = new Size(257, 32);
@@ -285,7 +289,7 @@
             panel6.Controls.Add(panel7);
             panel6.Controls.Add(textBox1);
             panel6.ForeColor = Color.FromArgb(50, 50, 50);
-            panel6.Location = new Point(31, 70);
+            panel6.Location = new Point(32, 71);
             panel6.Margin = new Padding(3, 2, 3, 2);
             panel6.Name = "panel6";
             panel6.Size = new Size(257, 32);
@@ -318,7 +322,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(246, 242, 255);
-            label4.Location = new Point(464, 48);
+            label4.Location = new Point(14, 11);
             label4.Name = "label4";
             label4.Size = new Size(76, 32);
             label4.TabIndex = 20;
@@ -355,7 +359,7 @@
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(30, 30, 30);
-            dataGridView1.Location = new Point(464, 89);
+            dataGridView1.Location = new Point(452, 89);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
@@ -364,7 +368,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 32;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(710, 448);
+            dataGridView1.Size = new Size(729, 438);
             dataGridView1.TabIndex = 19;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -372,11 +376,11 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(246, 242, 255);
-            label3.Location = new Point(43, 47);
+            label3.Location = new Point(3, 5);
             label3.Name = "label3";
-            label3.Size = new Size(166, 40);
+            label3.Size = new Size(156, 37);
             label3.TabIndex = 17;
             label3.Text = "Enroll User";
             // 
@@ -405,8 +409,9 @@
             textBox3.Location = new Point(4, 7);
             textBox3.Margin = new Padding(3, 2, 3, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(207, 20);
+            textBox3.Size = new Size(217, 20);
             textBox3.TabIndex = 32;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // panel1
             // 
@@ -415,7 +420,7 @@
             panel1.Controls.Add(textBox3);
             panel1.Location = new Point(960, 48);
             panel1.Name = "panel1";
-            panel1.Size = new Size(213, 32);
+            panel1.Size = new Size(221, 32);
             panel1.TabIndex = 34;
             // 
             // panel2
@@ -427,12 +432,30 @@
             panel2.Size = new Size(208, 1);
             panel2.TabIndex = 35;
             // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(35, 35, 35);
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Controls.Add(label4);
+            panel8.Location = new Point(438, 37);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(755, 500);
+            panel8.TabIndex = 35;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.FromArgb(131, 81, 232);
+            panel9.Controls.Add(label3);
+            panel9.Location = new Point(43, 40);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(344, 47);
+            panel9.TabIndex = 36;
+            // 
             // ucUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(30, 30, 30);
-            Controls.Add(label4);
             Controls.Add(button1);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -440,8 +463,9 @@
             Controls.Add(button5);
             Controls.Add(panel3);
             Controls.Add(dataGridView1);
-            Controls.Add(label3);
             Controls.Add(panel1);
+            Controls.Add(panel8);
+            Controls.Add(panel9);
             Margin = new Padding(3, 2, 3, 2);
             Name = "ucUser";
             Size = new Size(1212, 630);
@@ -456,6 +480,10 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -488,5 +516,7 @@
         private TextBox textBox3;
         private Panel panel1;
         private Panel panel2;
+        private Panel panel8;
+        private Panel panel9;
     }
 }

@@ -129,12 +129,12 @@
             // 
             textBox3.BackColor = Color.FromArgb(30, 30, 30);
             textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.ForeColor = Color.DarkViolet;
-            textBox3.Location = new Point(3, 7);
+            textBox3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox3.ForeColor = Color.FromArgb(246, 242, 255);
+            textBox3.Location = new Point(3, 10);
             textBox3.Margin = new Padding(3, 2, 3, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(267, 19);
+            textBox3.Size = new Size(267, 18);
             textBox3.TabIndex = 0;
             textBox3.UseSystemPasswordChar = true;
             // 
@@ -176,12 +176,12 @@
             // 
             textBox2.BackColor = Color.FromArgb(30, 30, 30);
             textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.DarkViolet;
+            textBox2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.ForeColor = Color.FromArgb(246, 242, 255);
             textBox2.Location = new Point(3, 7);
             textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(268, 19);
+            textBox2.Size = new Size(268, 18);
             textBox2.TabIndex = 0;
             // 
             // label3
@@ -222,12 +222,12 @@
             // 
             textBox1.BackColor = Color.FromArgb(30, 30, 30);
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.DarkViolet;
-            textBox1.Location = new Point(3, 7);
+            textBox1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.ForeColor = Color.FromArgb(246, 242, 255);
+            textBox1.Location = new Point(3, 10);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(266, 19);
+            textBox1.Size = new Size(266, 18);
             textBox1.TabIndex = 0;
             // 
             // label2

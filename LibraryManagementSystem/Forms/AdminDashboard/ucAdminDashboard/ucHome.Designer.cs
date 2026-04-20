@@ -62,6 +62,11 @@
             panel4 = new Panel();
             panel5 = new Panel();
             panel6 = new Panel();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
@@ -120,6 +125,7 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(721, 282);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
             // dataGridView2
             // 
@@ -224,7 +230,7 @@
             dataGridView4.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = Color.FromArgb(131, 81, 232);
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle11.ForeColor = Color.FromArgb(246, 242, 255);
             dataGridViewCellStyle11.Padding = new Padding(5);
             dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(131, 81, 232);
@@ -234,7 +240,7 @@
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = Color.FromArgb(30, 30, 30);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle12.ForeColor = Color.FromArgb(246, 242, 255);
             dataGridViewCellStyle12.Padding = new Padding(10);
             dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(40, 40, 40);
@@ -304,6 +310,7 @@
             dataGridView5.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             dataGridView5.RowHeadersVisible = false;
             dataGridView5.RowHeadersWidth = 51;
+            dataGridView5.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView5.Size = new Size(315, 171);
             dataGridView5.TabIndex = 4;
             // 
@@ -370,6 +377,11 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(30, 30, 30);
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(label7);
             panel1.Controls.Add(panel7);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(dataGridView5);
@@ -458,6 +470,61 @@
             panel6.Size = new Size(233, 215);
             panel6.TabIndex = 15;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.FromArgb(246, 242, 255);
+            label7.Location = new Point(594, 17);
+            label7.Name = "label7";
+            label7.Size = new Size(119, 17);
+            label7.TabIndex = 17;
+            label7.Text = "Books Borrowed: {}";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.FromArgb(246, 242, 255);
+            label8.Location = new Point(733, 17);
+            label8.Name = "label8";
+            label8.Size = new Size(86, 17);
+            label8.TabIndex = 18;
+            label8.Text = "Total users: {}";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.FromArgb(246, 242, 255);
+            label9.Location = new Point(835, 17);
+            label9.Name = "label9";
+            label9.Size = new Size(91, 17);
+            label9.TabIndex = 19;
+            label9.Text = "Total books: {}";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.FromArgb(246, 242, 255);
+            label10.Location = new Point(942, 17);
+            label10.Name = "label10";
+            label10.Size = new Size(100, 17);
+            label10.TabIndex = 20;
+            label10.Text = "Total Authors: {}";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.FromArgb(246, 242, 255);
+            label11.Location = new Point(1060, 17);
+            label11.Name = "label11";
+            label11.Size = new Size(118, 17);
+            label11.TabIndex = 21;
+            label11.Text = "Total Categories: {}";
+            // 
             // ucHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -506,5 +573,10 @@
         private Panel panel5;
         private Panel panel7;
         private Panel panel6;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private Label label8;
+        private Label label7;
     }
 }

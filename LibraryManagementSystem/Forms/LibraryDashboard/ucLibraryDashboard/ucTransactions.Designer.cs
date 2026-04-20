@@ -43,7 +43,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(246, 242, 255);
-            label1.Location = new Point(27, 19);
+            label1.Location = new Point(36, 19);
             label1.Name = "label1";
             label1.Size = new Size(275, 37);
             label1.TabIndex = 1;
@@ -78,14 +78,15 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(246, 242, 255);
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(30, 30, 30);
-            dataGridView1.Location = new Point(14, 17);
+            dataGridView1.Location = new Point(14, 16);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 32;
             dataGridView1.RowTemplate.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1120, 524);
+            dataGridView1.Size = new Size(1108, 516);
             dataGridView1.TabIndex = 0;
             // 
             // panel1

@@ -71,7 +71,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             var result = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                if (dbhelper.DeleteBooks(selecteduserid))
+                if (dbhelper.DeleteUsers(selecteduserid))
                 {
                     MessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -101,12 +101,12 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             {
                 if (dbhelper.UpdateUsers(selecteduserid, fullName, username, password, role))
                 {
-                    MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadUsers();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to update the book. Please check your data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to update the user. Please check your data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -150,6 +150,11 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
                     codewindow.Close();
                 }
             }
+        }
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string search = textBox3.Text.Trim();
+            LoadUsers(search);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string search = textBox3.Text.Trim();
+            string search = textBox2.Text.Trim();
             LoadCategories(search);
         }
 
@@ -123,6 +123,12 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
                     MessageBox.Show("Failed to update the category. Please check your data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string search = textBox2.Text.Trim();
+            LoadCategories(search);
         }
     }
 }

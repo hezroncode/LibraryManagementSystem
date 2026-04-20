@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using ColegioLibrarySystem.Helpers;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ColegioLibrarySystem.Helpers;
-using MySql.Data.MySqlClient;
 
 namespace LibraryManagementSystem.Forms.AdminDashboard
 {
@@ -54,40 +45,34 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             LoadCategories();
             LoadUsers();
             LoadTransaction();
+            label7.Text = $"Books Borrowed: {dbhelper.BorrowedBookCount()}";
+            label8.Text = $"Total Users: {dbhelper.TotalUserCount()}";
+            label9.Text = $"Total Books: {dbhelper.TotalBookCount()}";
+            label10.Text = $"Total Author: {dbhelper.TotalAuthorCount()}";
+            label11.Text = $"Total Categories: {dbhelper.TotalCategoryCount()}";
         }
-        /*private void StyleDataGridView(DataGridView dgv)
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Overall grid
-            dgv.BorderStyle = BorderStyle.None;
-            dgv.BackgroundColor = Color.White;
-            dgv.GridColor = Color.FromArgb(230, 230, 230);
-            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgv.RowHeadersVisible = false;
-            dgv.AllowUserToResizeRows = false;
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
+            {
+                string status = e.Value.ToString();
 
-            // Header
-            dgv.EnableHeadersVisualStyles = false;
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(112, 0, 192);
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9f, FontStyle.Bold);
-            dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
-            dgv.ColumnHeadersHeight = 36;
-            dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+                if (status == "Borrow")
+                {
+                    DateTime duedate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["Due Date"].Value);
 
-            // Rows
-            dgv.DefaultCellStyle.Font = new Font("Segoe UI", 9f);
-            dgv.DefaultCellStyle.ForeColor = Color.FromArgb(40, 40, 40);
-            dgv.DefaultCellStyle.BackColor = Color.White;
-            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 180, 255);
-            dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(40, 40, 40);
-            dgv.DefaultCellStyle.Padding = new Padding(5);
-            dgv.RowTemplate.Height = 32;
-
-            // Alternating row color
-            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 242, 255);
-        }*/
-
+                    if (DateTime.Now > duedate)
+                    {
+                        e.CellStyle.ForeColor = Color.Salmon;
+                        e.CellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                    }
+                }
+                else if (status == "Returned")
+                {
+                    e.CellStyle.ForeColor = Color.LightGreen;
+                }
+            }
+        }
     }
 }

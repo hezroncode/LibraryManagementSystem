@@ -20,14 +20,15 @@ namespace LibraryManagementSystem
 
         private void cnfrmbtn1_Click(object sender, EventArgs e)
         {
-            string user = textBox1.Text.Trim();
-            string pass = textBox2.Text.Trim();
+            string user = txtUsername.Text.Trim();
+            string pass = txtPassword.Text.Trim();
 
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Please enter both username and password.");
                 return;
             }
+            
 
             string query = "SELECT user_id, username, role, fullName FROM User WHERE username = @user AND password = @pass";
             MySqlParameter[] parameters = {
@@ -61,8 +62,8 @@ namespace LibraryManagementSystem
             else
             {
                 MessageBox.Show("Invalid username or password. Please try again.");
-                textBox1.Clear();
-                textBox2.Clear();
+                txtUsername.Clear();
+                txtPassword.Clear();
             }
         }
 
@@ -74,7 +75,7 @@ namespace LibraryManagementSystem
                 {
                     AdminSignUpForm signUpForm = new AdminSignUpForm();
                     signUpForm.Show();
-                    this.Close();
+                    this.Hide();
 
                     signUpForm.FormClosed += (s, args) =>
                     {
@@ -89,16 +90,14 @@ namespace LibraryManagementSystem
             passwordVisible = !passwordVisible;
             if (passwordVisible)
             {
-                textBox2.PasswordChar = '\0';
+                txtPassword.PasswordChar = '\0';
                 pictureBox2.Image = Image.FromFile("Images/eyeopen.png");
             }
             else
             {
-                textBox2.PasswordChar = '●';
+                txtPassword.PasswordChar = '●';
                 pictureBox2.Image = Image.FromFile("Images/eyeclose.png");
             }
         }
-
-        //protected override void OnFormClosed(FormClosedEventArgs e) { Application.Exit(); }
     }
 }

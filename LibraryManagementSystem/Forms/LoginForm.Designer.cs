@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             panel1 = new Panel();
+            pictureBox2 = new PictureBox();
             label4 = new Label();
             label3 = new Label();
             panel3 = new Panel();
-            pictureBox2 = new PictureBox();
-            textBox2 = new TextBox();
+            txtPassword = new TextBox();
             panel5 = new Panel();
             panel2 = new Panel();
             panel4 = new Panel();
-            textBox1 = new TextBox();
+            txtUsername = new TextBox();
             label2 = new Label();
             cnfrmbtn1 = new Button();
             linkLabel1 = new LinkLabel();
@@ -46,8 +46,8 @@
             pictureBox1 = new PictureBox();
             panel6 = new Panel();
             panel1.SuspendLayout();
-            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel6.SuspendLayout();
@@ -56,6 +56,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(30, 30, 30);
+            panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(panel3);
@@ -69,6 +70,17 @@
             panel1.Size = new Size(397, 497);
             panel1.TabIndex = 0;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(331, 294);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(32, 29);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 4;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
             // label4
             // 
             label4.Anchor = AnchorStyles.None;
@@ -77,7 +89,7 @@
             label4.ForeColor = Color.FromArgb(246, 242, 255);
             label4.Location = new Point(79, 271);
             label4.Name = "label4";
-            label4.Size = new Size(91, 25);
+            label4.Size = new Size(73, 20);
             label4.TabIndex = 12;
             label4.Text = "Password";
             // 
@@ -89,7 +101,7 @@
             label3.ForeColor = Color.FromArgb(246, 242, 255);
             label3.Location = new Point(79, 193);
             label3.Name = "label3";
-            label3.Size = new Size(98, 25);
+            label3.Size = new Size(78, 20);
             label3.TabIndex = 11;
             label3.Text = "Username";
             // 
@@ -97,37 +109,25 @@
             // 
             panel3.Anchor = AnchorStyles.None;
             panel3.BackColor = Color.Transparent;
-            panel3.Controls.Add(pictureBox2);
-            panel3.Controls.Add(textBox2);
+            panel3.Controls.Add(txtPassword);
             panel3.Controls.Add(panel5);
             panel3.Location = new Point(82, 288);
             panel3.Name = "panel3";
             panel3.Size = new Size(245, 42);
             panel3.TabIndex = 10;
             // 
-            // pictureBox2
+            // txtPassword
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(210, 6);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(32, 29);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 4;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.FromArgb(30, 30, 30);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Cursor = Cursors.IBeam;
-            textBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.FromArgb(246, 242, 255);
-            textBox2.Location = new Point(4, 12);
-            textBox2.Name = "textBox2";
-            textBox2.PasswordChar = '●';
-            textBox2.Size = new Size(239, 24);
-            textBox2.TabIndex = 3;
+            txtPassword.BackColor = Color.FromArgb(30, 30, 30);
+            txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.Cursor = Cursors.IBeam;
+            txtPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword.ForeColor = Color.FromArgb(246, 242, 255);
+            txtPassword.Location = new Point(4, 14);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '●';
+            txtPassword.Size = new Size(239, 20);
+            txtPassword.TabIndex = 3;
             // 
             // panel5
             // 
@@ -142,7 +142,7 @@
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(panel4);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtUsername);
             panel2.Location = new Point(82, 210);
             panel2.Name = "panel2";
             panel2.Size = new Size(245, 42);
@@ -156,17 +156,17 @@
             panel4.Size = new Size(240, 1);
             panel4.TabIndex = 1;
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.BackColor = Color.FromArgb(30, 30, 30);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Cursor = Cursors.IBeam;
-            textBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.FromArgb(246, 242, 255);
-            textBox1.Location = new Point(4, 14);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(239, 24);
-            textBox1.TabIndex = 0;
+            txtUsername.BackColor = Color.FromArgb(30, 30, 30);
+            txtUsername.BorderStyle = BorderStyle.None;
+            txtUsername.Cursor = Cursors.IBeam;
+            txtUsername.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUsername.ForeColor = Color.FromArgb(246, 242, 255);
+            txtUsername.Location = new Point(4, 14);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(239, 20);
+            txtUsername.TabIndex = 0;
             // 
             // label2
             // 
@@ -177,7 +177,7 @@
             label2.ForeColor = Color.FromArgb(246, 242, 255);
             label2.Location = new Point(159, 123);
             label2.Name = "label2";
-            label2.Size = new Size(110, 46);
+            label2.Size = new Size(89, 37);
             label2.TabIndex = 6;
             label2.Text = "Login";
             // 
@@ -205,9 +205,9 @@
             linkLabel1.Anchor = AnchorStyles.Bottom;
             linkLabel1.AutoSize = true;
             linkLabel1.LinkColor = Color.White;
-            linkLabel1.Location = new Point(149, 456);
+            linkLabel1.Location = new Point(154, 473);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(158, 20);
+            linkLabel1.Size = new Size(128, 15);
             linkLabel1.TabIndex = 2;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Create Admin Account";
@@ -217,11 +217,11 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(28, 84);
+            label1.Location = new Point(51, 84);
             label1.Name = "label1";
-            label1.Size = new Size(413, 40);
+            label1.Size = new Size(340, 32);
             label1.TabIndex = 3;
             label1.Text = "Library Management System";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -231,7 +231,7 @@
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(122, 200);
+            pictureBox1.Location = new Point(121, 200);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(200, 154);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -253,7 +253,7 @@
             // LoginForm
             // 
             AcceptButton = cnfrmbtn1;
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
             ClientSize = new Size(856, 497);
@@ -266,9 +266,9 @@
             Text = "LoginPage";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -286,10 +286,10 @@
         private Label label1;
         private Panel panel2;
         private Panel panel3;
-        private TextBox textBox2;
+        private TextBox txtPassword;
         private Panel panel5;
         private Panel panel4;
-        private TextBox textBox1;
+        private TextBox txtUsername;
         private Label label4;
         private Label label3;
         private PictureBox pictureBox1;

@@ -1,6 +1,7 @@
 ﻿using ColegioLibrarySystem.Helpers;
+using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
-
+using System.Data;
 
 namespace LibraryManagementSystem.Forms
 {
@@ -15,8 +16,6 @@ namespace LibraryManagementSystem.Forms
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
             this.Close();
         }
 
@@ -31,7 +30,15 @@ namespace LibraryManagementSystem.Forms
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
-
+            if (Usernametaken(username))
+            {
+                MessageBox.Show("Username is already taken. Please choose another.", "Username Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (password.Length < 3)
+            {
+                MessageBox.Show("Password is too short, at least 3 characters long", "Short password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             try
             {
                 string query = "INSERT INTO User (fullName, username, password, role) VALUES (@fullName, @username, @password, 'Admin')";
@@ -43,8 +50,6 @@ namespace LibraryManagementSystem.Forms
                 dbHelper.ExecuteNonQuery(query, parameters);
 
                 MessageBox.Show($"Admin account created successfully! {fullName}");
-                LoginForm loginForm = new LoginForm();
-                loginForm.Show();
                 this.Close();
             }
             catch (Exception ex)
@@ -52,6 +57,22 @@ namespace LibraryManagementSystem.Forms
                 MessageBox.Show("Something went wrong");
             }
         }
-        //protected override void OnFormClosed(FormClosedEventArgs e) { Application.Exit(); }
+        private bool Usernametaken(string username)
+        {
+            string query = "SELECT COUNT(*) FROM User WHERE username = @username";
+            MySqlParameter[] parameters = {
+                new MySqlParameter("@username", username)
+            };
+
+            DataTable dt = dbHelper.ExecuteQuery(query, parameters);
+
+            if (dt.Rows.Count > 0)
+            {
+                int count = Convert.ToInt32(dt.Rows[0][0]);
+                return count > 0;
+            }
+
+            return false;
+        }
     }
 }

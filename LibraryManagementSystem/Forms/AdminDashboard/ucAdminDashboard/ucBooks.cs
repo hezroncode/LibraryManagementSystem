@@ -201,5 +201,11 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             Task.Delay(200).ContinueWith(_ =>
                 this.Invoke(() => listBox1.Visible = false));
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string search = textBox2.Text.Trim();
+            LoadBooks(search);
+        }
     }
 }

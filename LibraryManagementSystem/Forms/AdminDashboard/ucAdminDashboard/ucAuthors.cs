@@ -108,19 +108,25 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             string authorname = textBox1.Text.Trim();
             string authordescription = textBox2.Text.Trim();
 
-            var confirm = MessageBox.Show("Save changes to this book?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show("Save changes to this author?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
             {
                 if (dbHelper.UpdateAuthors(selectedauthorid, authorname, authordescription))
                 {
-                    MessageBox.Show("Book updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Author updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadAuthors();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to update the book. Please check your data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to update the author. Please check your data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string search = textBox3.Text.Trim();
+            LoadAuthors(search);
         }
     }
 }
