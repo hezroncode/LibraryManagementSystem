@@ -157,16 +157,19 @@ namespace ColegioLibrarySystem.Helpers
 
         public DataTable GetCurrentBorrowedBooks(int userId)
         {
-            string query = @"SELECT b.book_id AS 'BookID', b.title AS 'Title', COALESCE(a.author_name, 'Unknown') AS 'Author', c.category_name AS 'Category', 
-                            SUM(CASE WHEN LOWER(t.status) = 'borrow' THEN t.quantity WHEN LOWER(t.status) = 'returned' THEN -t.quantity ELSE 0 END) AS 'Copies'
-                             FROM book b
-                             INNER JOIN `transaction` t ON b.book_id = t.book_id
-                             LEFT JOIN author a ON b.author_id = a.author_id
-                             LEFT JOIN Category c ON b.category_id = c.category_id
-                             WHERE t.user_id = @userId
-                             GROUP BY b.book_id, b.title, a.author_name, c.category_name
-                             HAVING Copies > 0
-                             ORDER BY b.title ASC";
+            string query = @"SELECT b.book_id AS 'BookID', 
+                            b.title AS 'Title', 
+                            COALESCE(a.author_name, 'Unknown') AS 'Author', 
+                            COALESCE(c.category_name, 'Uncategorized') AS 'Category', 
+                            SUM(t.quantity) AS 'Copies'
+                     FROM `transaction` t
+                     INNER JOIN book b ON t.book_id = b.book_id
+                     LEFT JOIN author a ON b.author_id = a.author_id
+                     LEFT JOIN Category c ON b.category_id = c.category_id
+                     WHERE t.user_id = @userId 
+                     AND t.status LIKE 'Borrow%' /* Catches Borrow, Borrowed, etc. */
+                     GROUP BY b.book_id, b.title, COALESCE(a.author_name, 'Unknown'), COALESCE(c.category_name, 'Uncategorized')
+                     ORDER BY b.title ASC";
 
             MySqlParameter[] parameters = { new MySqlParameter("@userId", userId) };
             return ExecuteQuery(query, parameters);
@@ -314,7 +317,7 @@ namespace ColegioLibrarySystem.Helpers
 
         public bool UpdateBook(int bookId, string title, int authorId, int categoryId, int year, int totalCopies)
         {
-            string query = @"UPDATE `book` SET title=@title, author_id=@authorId, category_id=@categoryId, yearpublished=@year, total_copies=@copies WHERE book_id=@bookId";
+            string query = @"UPDATE `book` SET title=@title, author_id=@authorId, category_id=@categoryId, yearpublished=@year, total_copies = total_copies + @copies, available_copies = available_copies + @copies WHERE book_id=@bookId";
             return ExecuteNonQuery(query, new[] {
                 new MySqlParameter("@title", title), new MySqlParameter("@authorId", authorId),
                 new MySqlParameter("@categoryId", categoryId), new MySqlParameter("@year", year),

@@ -1,4 +1,5 @@
 ﻿using ColegioLibrarySystem.Helpers;
+using ColegioLibrarySystem.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -65,6 +66,11 @@ namespace LibraryManagementSystem.Forms.AdminDashboard
             if (selecteduserid == -1)
             {
                 MessageBox.Show("Please select a user to delete");
+                return;
+            }
+            if (textBox2.Text == Session.Username)
+            {
+                MessageBox.Show("You cannot delete your own account.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
